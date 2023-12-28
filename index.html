@@ -1,0 +1,690 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>HCI</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="32f284d1-7933-4ff5-b3cd-ffa0a828c4fc" class="page sans"><header><h1 class="page-title">HCI</h1><p class="page-description"></p></header><div class="page-body"><figure id="98383a3c-d2a8-48af-89a8-9afe8af5af00" class="link-to-page"><a href="https://www.notion.so/HCI-IMPORTANT-QUESTIONS-98383a3cd2a848af89a89afe8af5af00?pvs=21">HCI IMPORTANT QUESTIONS</a></figure><hr id="3baacd7e-359d-4e02-af4b-3a5a7cb8506b"/><p id="94713d6c-9877-45e7-ad3a-28e21a8340ca" class="">Module 1</p><p id="ca07db42-d6c4-49f8-ab68-1954daa81944" class=""><strong>Give a brief summary on graphical systems.</strong></p><ul id="07f42331-7302-4c55-b7ff-426d670b357f" class="bulleted-list"><li style="list-style-type:disc">User interface is a collection of techniques and mechanisms.</li></ul><ul id="34477d9c-207b-46f6-a323-5a770704bfa9" class="bulleted-list"><li style="list-style-type:disc">Primary interaction mechanism is electronic pointing device equivalent to the human hand.</li></ul><ul id="ecaad129-26a1-42f4-8f8d-9a51a8cc51bf" class="bulleted-list"><li style="list-style-type:disc">User interacts with is a collection of elements referred to as <strong>objects</strong>.</li></ul><p id="11fc97e3-3f6f-4329-ad6d-9469d7aac0e0" class=""><strong>Objects: </strong>Can be seen, heard, touched, or otherwise perceived.</p><ul id="4851bcdc-3cd2-4c15-b782-c424977bd1d1" class="bulleted-list"><li style="list-style-type:disc"><strong>Objects are always visible</strong> to the user and are used to perform tasks.</li></ul><ul id="044aa9ca-ab80-41d7-9239-b99278a4e636" class="bulleted-list"><li style="list-style-type:disc">Interacted with as entities independent of all other objects.</li></ul><ul id="5ce25314-9216-413a-8703-594a031b2cce" class="bulleted-list"><li style="list-style-type:disc">People perform operations, called <strong>actions</strong>, on <strong>objects</strong>.</li></ul><p id="5d44f6e9-c5e1-4ffd-9928-64d97c8c2825" class=""><strong>Three-dimensional appearance:</strong> Replaced one-dimensional text-based screens.</p><p id="d5b4bdcd-26d1-48bd-82b3-6be2f60462b8" class="">Features of Graphical Systems: [FDLFMMEER | WIMP]</p><div id="9f52e174-819f-4ba1-92c2-979bbe3c073d" class="column-list"><div id="179c60ed-d735-4622-ab1b-4deab49c9c2d" style="width:43.75%" class="column"><ol type="1" id="868e5162-063c-402c-bd34-d894e8d60f1d" class="numbered-list" start="1"><li>Floating Windows.</li></ol><ol type="1" id="678fc54c-c962-4fad-a70d-187a7ca7e360" class="numbered-list" start="2"><li>Dynamic Controls.</li></ol><ol type="1" id="ab0ea56c-bbbf-43f1-82ea-f335baff3560" class="numbered-list" start="3"><li>Etched Lines for Clarity.</li></ol><ol type="1" id="01dcb1c1-3f30-49c4-9042-6de9bf193ebf" class="numbered-list" start="4"><li>Flexible Information Display.</li></ol><ol type="1" id="ff3aeedf-41f8-414f-b38f-2669b9537f9e" class="numbered-list" start="5"><li>Pop-up Menus.</li></ol></div><div id="1214dde7-db64-4e4f-9c70-deb8223d5d4a" style="width:56.25%" class="column"><ol type="1" id="0958a369-0e8f-41fc-b948-7dd5e54d4b25" class="numbered-list" start="6"><li>Use of Pointing Devices (Mouse, Joystick).</li></ol><ol type="1" id="fba6dff8-a00b-40f8-94e1-7262c0686d20" class="numbered-list" start="7"><li>WIMP: Windows, Icons, Menus, Pointers.</li></ol><ol type="1" id="afd8a50a-b32c-486f-846b-6b35926da281" class="numbered-list" start="8"><li>Enhanced Information Processing.</li></ol><ol type="1" id="93eba0c6-3640-497c-beb9-1189825b2968" class="numbered-list" start="9"><li>Efficient Content Presentation.</li></ol><ol type="1" id="d86e7722-12d8-47fb-9a5e-f68bf2bf9872" class="numbered-list" start="10"><li>Reduced Memory Load.</li></ol></div></div><table id="7170ab46-f002-4353-89ca-27d07a10706c" class="simple-table"><tbody><tr id="59b5e630-ffde-4cb9-b7a2-e775b560aa74"><td id="ywZM" class="" style="width:327px"><strong>Advantages</strong></td><td id=";x]F" class="" style="width:330px"><strong>Disadvantages</strong></td></tr><tr id="0e1ab008-05a9-4406-ab12-3fbb76b7a11c"><td id="ywZM" class="" style="width:327px">Symbols recognized faster than text</td><td id=";x]F" class="" style="width:330px">Greater design complexity</td></tr><tr id="9258c89b-8f35-4d6e-b089-b26dbb1836bc"><td id="ywZM" class="" style="width:327px">Faster learning</td><td id=";x]F" class="" style="width:330px">Learning still necessary</td></tr><tr id="ae85c788-08dd-4c01-ba76-f345521fbf46"><td id="ywZM" class="" style="width:327px">Faster use and problem solving</td><td id=";x]F" class="" style="width:330px">Lack of experimentally-derived guidelines</td></tr><tr id="56ced337-827d-4771-baa8-4a0c0d863f6a"><td id="ywZM" class="" style="width:327px">More natural</td><td id=";x]F" class="" style="width:330px">Use of pointing device may need learning</td></tr><tr id="f88c28ed-d72f-4cfa-a13d-b319ebd0ece4"><td id="ywZM" class="" style="width:327px">Exploits visual/spatial cues</td><td id=";x]F" class="" style="width:330px">Human comprehension limitations</td></tr><tr id="c8851b19-f354-4536-bb2d-95d559794453"><td id="ywZM" class="" style="width:327px">Provides context</td><td id=";x]F" class="" style="width:330px">Working domain limited to the present</td></tr><tr id="ce493e78-bc67-426f-aa18-e393d3f36e11"><td id="ywZM" class="" style="width:327px">Fewer errors</td><td id=";x]F" class="" style="width:330px">Production limitations</td></tr><tr id="862fc5ec-07cf-4394-ae8e-6cd5a1cebbe7"><td id="ywZM" class="" style="width:327px">Increased feeling of control</td><td id=";x]F" class="" style="width:330px">Few tested icons exist</td></tr></tbody></table><hr id="cb48874d-82f5-4fc1-bbaa-1c6335d8ef35"/><p id="4641e2aa-0fdc-4d27-abf9-fe76ebbba5a2" class="">Good design is the art of creating products, systems, or interfaces that are functional, aesthetically pleasing, and user-centered, ensuring they effectively serve their intended purpose.</p><p id="04716d58-2244-4c3f-9e5d-69a0d21a8d51" class="">Importance of Good Design:</p><table id="0cf2f946-99c8-4226-89c2-8f8b3617cb8c" class="simple-table"><tbody><tr id="c8718a5e-ec4b-4ba8-b6cf-b835383592e3"><td id="fhV=" class="" style="width:226px"><strong>Key Points</strong></td><td id="ScO&lt;" class="" style="width:566px"><strong>Details</strong></td></tr><tr id="3ad5b1e3-8997-4bbd-b073-4c45b0ef0c19"><td id="fhV=" class="" style="width:226px">Efficiency / Usability Challenge</td><td id="ScO&lt;" class="" style="width:566px">Creating efficient, usable systems is challenging.</td></tr><tr id="91f28643-d97b-4009-9b33-1129c53fdadb"><td id="fhV=" class="" style="width:226px">Common Challenges</td><td id="ScO&lt;" class="" style="width:566px">Lack of care, common sense, or time constraints may lead to suboptimal systems.</td></tr><tr id="07662759-deb7-44b0-8cba-08c24554dc32"><td id="fhV=" class="" style="width:226px">User-Centric Approach</td><td id="ScO&lt;" class="" style="width:566px">Fulfills user requirements with well designed procedures, focusing on data activities.</td></tr><tr id="5b0e9aed-e811-45db-91d5-5344f02297fa"><td id="fhV=" class="" style="width:226px">Interaction Design</td><td id="ScO&lt;" class="" style="width:566px">Enhances overall user experience by supporting users in everyday life.</td></tr><tr id="16dff71a-d594-49d1-8fa6-93f3f065e175"><td id="fhV=" class="" style="width:226px">Performance Analysis</td><td id="ScO&lt;" class="" style="width:566px">Well-designed interfaces aid in analyzing system performance, improving efficiency.</td></tr><tr id="5b5ecb50-85d9-4c35-84e8-b7e73341edcd"><td id="fhV=" class="" style="width:226px">User Satisfaction Impact</td><td id="ScO&lt;" class="" style="width:566px">Improper design may lead to frustration, abandonment, and potential health issues.</td></tr></tbody></table><p id="43ca79fd-9825-4fe1-a1b0-ba3e2851ac8e" class="">Benefits of Good Design:</p><table id="836cd623-a375-4cfc-a314-f37ea8a3403a" class="simple-table"><tbody><tr id="1a8cf156-902b-409a-ad63-d8f9b875b0a3"><td id="GCMX" class="" style="width:231px"><strong>Key Benefits</strong></td><td id="~hSp" class="" style="width:577px"><strong>Details</strong></td></tr><tr id="a7212339-6c29-4d1a-81b2-dad77595964b"><td id="GCMX" class="" style="width:231px">Clarity and Productivity Boost</td><td id="~hSp" class="" style="width:577px">Enhances screen clarity and readability, resulting in a 20% productivity boost.</td></tr><tr id="abdb4d16-ce65-499c-baee-e8bf14e082d3"><td id="GCMX" class="" style="width:231px">Time and Cost Savings</td><td id="~hSp" class="" style="width:577px">Proper formatting reduces user time, lowering training and support costs.</td></tr><tr id="026e39d9-6bc3-4183-b224-0da134256d04"><td id="GCMX" class="" style="width:231px">Employee Satisfaction</td><td id="~hSp" class="" style="width:577px">Reduces frustration, increasing overall employee satisfaction.</td></tr><tr id="93eccbab-1c90-494a-8e32-233595e284e6"><td id="GCMX" class="" style="width:231px">Customer Benefits</td><td id="~hSp" class="" style="width:577px">Improved service and efficiency benefit customers.</td></tr><tr id="7a210882-abe9-490d-aec8-073498149c9b"><td id="GCMX" class="" style="width:231px">Economic Impact</td><td id="~hSp" class="" style="width:577px">Identifying and resolving design problems leads to significant economic benefits.</td></tr><tr id="8d20e0ba-dc1e-4634-ac4d-c39ec0d35777"><td id="GCMX" class="" style="width:231px">Mass Usage Impact</td><td id="~hSp" class="" style="width:577px">Proper screen design yields substantial savings given the widespread use of screens.</td></tr><tr id="5258bb7f-5345-43ca-9703-101b6b2b015c"><td id="GCMX" class="" style="width:231px">Cost Savings</td><td id="~hSp" class="" style="width:577px">Proper screen design lowers replacement costs for malfunctioning computers, contributing to overall savings.</td></tr></tbody></table><hr id="b78de40b-2593-41e5-8959-9b3210aaabe3"/><p id="4ac9171c-d05c-487c-93b4-6a89c757a351" class=""><strong>Importance of User Interface:</strong></p><ol type="1" id="b1ee27de-6e65-4eb5-bcf0-a1c400275c1a" class="numbered-list" start="1"><li>A good interface is vital for users to access system capabilities.</li></ol><ol type="1" id="99653fc6-18f5-4f3b-a93e-92311ad90228" class="numbered-list" start="2"><li>It influences critical tasks, impacting customer relations and profitability.</li></ol><ol type="1" id="83f94e6f-20d1-4428-9668-8b67db3c66be" class="numbered-list" start="3"><li>Confusing layouts lead to difficulty, mistakes, and user dissatisfaction.</li></ol><ol type="1" id="d7c2da23-bfd2-4d3c-8183-7543dc39e6c4" class="numbered-list" start="4"><li>Poor design causes frustration and stress, affecting the overall user experience.</li></ol><hr id="78bdbf9e-9a28-4729-8c61-6cb78c2085a6"/><table id="97dc304a-86ec-4fe1-9ca7-b6d64f24be0c" class="simple-table"><tbody><tr id="57e14965-5c62-46d5-b61c-61258c3313f4"><td id="Dbo;" class="" style="width:144px">Aspect</td><td id="cU[i" class="" style="width:280.90625px">GUI Design</td><td id="KGtt" class="" style="width:337px">Web Page Design</td></tr><tr id="a004b5c9-e5cd-4414-b492-5ffa222f07bc"><td id="Dbo;" class="" style="width:144px"><strong>Devices</strong></td><td id="cU[i" class="" style="width:280.90625px">Standardized appearance.</td><td id="KGtt" class="" style="width:337px">Diverse appearance influenced by hardware.</td></tr><tr id="740505e7-f33c-43f7-bd57-0c6c99442d5a"><td id="Dbo;" class="" style="width:144px"><strong>User Focus</strong></td><td id="cU[i" class="" style="width:280.90625px">Data and apps</td><td id="KGtt" class="" style="width:337px">Information and navigation.</td></tr><tr id="39497ab4-1ad6-4eeb-9b4b-945c57aacfe3"><td id="Dbo;" class="" style="width:144px"><strong>Data information</strong></td><td id="cU[i" class="" style="width:280.90625px">known and trusted sources</td><td id="KGtt" class="" style="width:337px">Source not always trusted.</td></tr><tr id="d06c51a4-3e84-4b4a-9e71-6e636621a213"><td id="Dbo;" class="" style="width:144px"><strong>User Tasks</strong></td><td id="cU[i" class="" style="width:280.90625px">Install, config, personalize, start, use, update, open and close data files</td><td id="KGtt" class="" style="width:337px">Browsing, form-filling, rapid page transitions.</td></tr><tr id="86289fcf-3066-4b1f-8855-16cc38f0b575"><td id="Dbo;" class="" style="width:144px"><strong>User’s Conceptual Space</strong></td><td id="cU[i" class="" style="width:280.90625px">Controlled with standardized elements.</td><td id="KGtt" class="" style="width:337px">Unorganized, variable presentation.</td></tr><tr id="9bbf734b-9323-413d-9e5b-c9fed9432a38"><td id="Dbo;" class="" style="width:144px"><strong>Presentation</strong></td><td id="cU[i" class="" style="width:280.90625px">Windows, menus, controls, data, toolbars, messages, and so on</td><td id="KGtt" class="" style="width:337px">Two components browse and page.</td></tr><tr id="410726b7-99d4-459c-bfe2-2c51af7a27e8"><td id="Dbo;" class="" style="width:144px"><strong>Navigation</strong></td><td id="cU[i" class="" style="width:280.90625px">Menu-based, less visible concept.</td><td id="KGtt" class="" style="width:337px">Link-based, highly visible navigation.</td></tr><tr id="fc4f86c1-e549-4142-8b54-c4ba0ee2c91d"><td id="Dbo;" class="" style="width:144px"><strong>Context</strong></td><td id="cU[i" class="" style="width:280.90625px">Better sense, restricted paths.</td><td id="KGtt" class="" style="width:337px">Limited sense, unlimited paths.</td></tr><tr id="22f7c5ff-5918-4a7e-b1dd-36ec73dd0d89"><td id="Dbo;" class="" style="width:144px"><strong>Interaction</strong></td><td id="cU[i" class="" style="width:280.90625px">Clicks with instant response.</td><td id="KGtt" class="" style="width:337px">Single-click, variable response times.</td></tr><tr id="3f5dcefd-cf8c-4937-8fe0-1b26a566e20f"><td id="Dbo;" class="" style="width:144px"><strong>Response Time</strong></td><td id="cU[i" class="" style="width:280.90625px">Instant</td><td id="KGtt" class="" style="width:337px">Depends on transmission speed &amp; page content</td></tr><tr id="5f506101-d2d9-416b-829b-4a3ce4a081cc"><td id="Dbo;" class="" style="width:144px"><strong>Visual Style</strong></td><td id="cU[i" class="" style="width:280.90625px">Constrained, little personalization.</td><td id="KGtt" class="" style="width:337px">Artistic, unrestricted, limited personalization.</td></tr><tr id="b0344dfe-eaf1-4d34-a248-8d1ac41f9d3e"><td id="Dbo;" class="" style="width:144px"><strong>System Capability</strong></td><td id="cU[i" class="" style="width:280.90625px">Unlimited based on hardware/software.</td><td id="KGtt" class="" style="width:337px">Limited by browser/network capabilities.</td></tr><tr id="14ee9a40-5540-4157-bf54-c7996407fc8d"><td id="Dbo;" class="" style="width:144px"><strong>Task Efficiency</strong></td><td id="cU[i" class="" style="width:280.90625px">Targeted tasks, limited by programming.</td><td id="KGtt" class="" style="width:337px">Limited by browser/network capabilities.</td></tr><tr id="001473dc-49a0-4c99-991b-51d8af7369f7"><td id="Dbo;" class="" style="width:144px"><strong>Consistency</strong></td><td id="cU[i" class="" style="width:280.90625px">Consistent within applications.</td><td id="KGtt" class="" style="width:337px">Varied identity among sites, deviating from guidelines.</td></tr></tbody></table><p id="4e92f0a6-21da-445f-aa16-2017319858cd" class="">
+</p><p id="94cf6196-22b6-45ef-ba0f-41ba878bf428" class="">CHATGPT </p><table id="bafd5106-4dd3-44e9-9843-6cd8e27f564c" class="simple-table"><tbody><tr id="e3ad0519-1149-4872-a364-cef349ab0f4b"><td id="l~mt" class="">Aspect</td><td id="eS{l" class="">GUI Design</td><td id="zZZu" class="" style="width:314px">Web Page Design</td></tr><tr id="5dceffd6-5f6a-407d-913e-869a9e9266d9"><td id="l~mt" class=""><strong>Platform</strong></td><td id="eS{l" class="">Desktop applications</td><td id="zZZu" class="" style="width:314px">Web browsers and online use</td></tr><tr id="76d39fe6-2c2a-4c0c-b721-18021c7c5e46"><td id="l~mt" class=""><strong>Interaction</strong></td><td id="eS{l" class="">Local system resources</td><td id="zZZu" class="" style="width:314px">Remote servers and APIs</td></tr><tr id="9a91ff74-64c8-408c-ba4c-ab0f8756c697"><td id="l~mt" class=""><strong>Rendering</strong></td><td id="eS{l" class="">Native on user&#x27;s device</td><td id="zZZu" class="" style="width:314px">Browser-based rendering</td></tr><tr id="c02bf9ee-1be7-4118-bcf6-44ed98c258e1"><td id="l~mt" class=""><strong>Tools</strong></td><td id="eS{l" class="">GUI development tools</td><td id="zZZu" class="" style="width:314px">Web development tools, frameworks</td></tr><tr id="7df132d2-1c33-47e7-8140-dd10a9586d1e"><td id="l~mt" class=""><strong>Distribution</strong></td><td id="eS{l" class="">Standalone software</td><td id="zZZu" class="" style="width:314px">Accessible via web browsers</td></tr><tr id="ff675f56-3a1e-4507-87d7-2b4513819e33"><td id="l~mt" class=""><strong>Updates</strong></td><td id="eS{l" class="">Software installations</td><td id="zZZu" class="" style="width:314px">Seamless online updates</td></tr><tr id="efafa3bb-4dee-4319-80f7-df295b4cd3b5"><td id="l~mt" class=""><strong>Responsiveness</strong></td><td id="eS{l" class="">Screen size optimizations</td><td id="zZZu" class="" style="width:314px">Responsive design for various devices</td></tr><tr id="35e41be7-4a0e-4374-9594-afa0592aff03"><td id="l~mt" class=""><strong>Dependency</strong></td><td id="eS{l" class="">Local machine resources</td><td id="zZZu" class="" style="width:314px">Internet connection required</td></tr><tr id="03e8dfbb-4a12-4f81-97e8-a9de30d7e3db"><td id="l~mt" class=""><strong>Language</strong></td><td id="eS{l" class="">Java, C#, C++</td><td id="zZZu" class="" style="width:314px">HTML, CSS, JavaScript</td></tr><tr id="6857b170-3d8e-4b77-aaef-db26e894b68e"><td id="l~mt" class=""><strong>Access</strong></td><td id="eS{l" class="">Installation and setup</td><td id="zZZu" class="" style="width:314px">Accessible through a URL</td></tr><tr id="6c202bd4-14b7-4a77-b83d-91491dd54f4b"><td id="l~mt" class=""><strong>Examples</strong></td><td id="eS{l" class="">Windows applications, software</td><td id="zZZu" class="" style="width:314px">Websites, web applications</td></tr></tbody></table><hr id="e67931b3-04e9-4f62-85e8-119acd9ac90a"/><table id="488f8a68-bda9-40dd-8fb3-db9348763e12" class="simple-table"><tbody><tr id="dcc57451-662f-49cb-9a7a-ff2ab1219229"><td id="rtgF" class="" style="width:60px">Year</td><td id="gq~e" class="" style="width:593px">Key Developments in Screen Designing</td></tr><tr id="00ba9633-973a-445a-8f3b-352888e0dcc6"><td id="rtgF" class="" style="width:60px">1970s</td><td id="gq~e" class="" style="width:593px">Introduction of <strong>cathode ray tube</strong> (CRT) technology.</td></tr><tr id="a679500f-9540-4fa6-93d8-2d4e6be8d67d"><td id="rtgF" class="" style="width:60px"></td><td id="gq~e" class="" style="width:593px">Launch of <strong>IBM&#x27;s 3270 CRT</strong> terminal; limited design guidelines.</td></tr><tr id="a0493fae-93ce-4894-a554-09d2ba51d05b"><td id="rtgF" class="" style="width:60px">1980s</td><td id="gq~e" class="" style="width:593px">Implementation of design <strong>guidelines</strong> for <strong>clearer screens.</strong></td></tr><tr id="09e70a47-065d-4e2e-a224-716823a801e6"><td id="rtgF" class="" style="width:60px"></td><td id="gq~e" class="" style="width:593px">Use of <strong>function keys, prompts,</strong> and codes for user assistance.</td></tr><tr id="69908567-af01-4305-add4-fe817116ca9c"><td id="rtgF" class="" style="width:60px">1990s</td><td id="gq~e" class="" style="width:593px">Integration of <strong>graphics</strong>; addition of <strong>borders</strong> for element grouping.</td></tr><tr id="5ab6235a-aa01-4d25-870c-fb405d5dd743"><td id="rtgF" class="" style="width:60px"></td><td id="gq~e" class="" style="width:593px">Shift to <strong>buttons </strong>and menus for <strong>commands</strong>; diverse element features.</td></tr></tbody></table><hr id="c10cd7ba-a24c-4736-9c3a-5d0047994046"/><p id="b713e12c-a414-4af6-a3e6-a1a9fa15cfd2" class=""><strong>Direct Manipulation: </strong>Users interact with UI objects directly using physical, reversible actions with immediate feedback. <span style="border-bottom:0.05em solid">Example</span> - include zooming in by pinching on a mobile screen.</p><div id="97806e88-9515-43fe-aaf6-d31de26a602d" class="column-list"><div id="edf9382b-f7d9-45a0-b154-4e443f712c3c" style="width:50%" class="column"><p id="3c994a20-87a6-4bb7-a386-deed74bcfee1" class=""><strong>Principles:</strong></p><p id="04e05b3f-6814-49d9-8dcc-b0454095fa44" class="">Continuous representations with visual metaphor.</p><p id="4660c902-b683-460a-880d-d143020d0771" class="">Physical actions or labeled buttons for simplicity.</p><p id="2e2feb0a-8c8d-4570-ad3c-8dce866477d4" class="">Rapid, incremental, and reversible actions.</p></div><div id="566ffe27-a08e-43df-9a70-b3ed234dfd14" style="width:50%" class="column"><p id="0f978a96-d12b-4827-990f-20016d0266f1" class=""><strong>Characteristics:</strong></p><p id="f2e76905-3ddc-48b3-9198-2b683d57b1b3" class="">Portrayal of system as an extension of the real world.</p><p id="6d98e211-0790-4c9a-ac9c-7750d73e7288" class="">Continuous visibility of objects and actions.</p><p id="6922c13d-111b-4e92-ae73-a05122653694" class="">Rapid, reversible actions with immediate results.</p></div></div><p id="5a05b779-4076-4616-b1f8-56f2b4673dc9" class=""><strong>Drawbacks:</strong></p><ul id="ff1c986e-d13d-4dfe-bdbe-52116fe8a25a" class="bulleted-list"><li style="list-style-type:disc">Conceptualization difficulties.</li></ul><ul id="1281e40e-627c-47b2-8fc7-e2a05620e13c" class="bulleted-list"><li style="list-style-type:disc">System limitations.</li></ul><ul id="f0cab5d1-0b66-4572-b430-1cd903662a55" class="bulleted-list"><li style="list-style-type:disc">Learning complexity.</li></ul><div id="f15c916d-7ec4-48e0-8a0c-7bca8eb0c26a" class="column-list"><div id="5e4f3537-a955-4325-8dac-288c432016d4" style="width:50%" class="column"><p id="b9d1c1e4-a161-42f9-933d-87fb67d28c56" class=""><strong>Indirect Manipulation:<br/><br/></strong>Uses text-based elements (e.g., <span style="border-bottom:0.05em solid">menus</span>) instead of symbols. Often combined with direct manipulation in window systems.</p><p id="762bfe64-2105-435f-9bb9-4ab60a8beb76" class=""><strong>Challenges</strong></p><ul id="3e7460fb-a945-441f-ba74-52c34431bfa3" class="bulleted-list"><li style="list-style-type:disc">Difficulty in graphical system conceptualization.</li></ul><ul id="4660166c-dc7b-4c5f-96e1-e2d278b4bbcf" class="bulleted-list"><li style="list-style-type:disc">Limited graphics capability.</li></ul><ul id="7af266b6-58af-47ad-8185-1981d540160f" class="bulleted-list"><li style="list-style-type:disc">Space constraints for controls.</li></ul><ul id="31541015-6c8d-49e6-a616-fd7e8960365c" class="bulleted-list"><li style="list-style-type:disc">Learning and memory challenges.</li></ul></div><div id="e68575f5-cc6e-43c0-9dea-810afa6bd8ea" style="width:50%" class="column"><figure id="16765605-b788-4c32-8ef7-c2676cb4e85c" class="image"><a href="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled.png"><img style="width:384px" src="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled.png"/></a></figure></div></div><hr id="82a31e67-0b85-458f-ab65-a7875f52b3ea"/><p id="3a808027-89ac-4690-b20d-ff0e9880a5d3" class=""><strong>Principles of User Interface Design: </strong><em>Derived from the original principles of the </em><span style="border-bottom:0.05em solid"><em>Xerox STAR.</em></span></p><ol type="1" id="36e00f16-2e63-4e43-945d-356dbb1421f8" class="numbered-list" start="1"><li><strong>User-Centric Extension:</strong> Interface should extend the user&#x27;s capabilities &amp; cater to their specific needs.</li></ol><ol type="1" id="bfb11f0d-9dec-4a04-be8a-3e946a8337b3" class="numbered-list" start="2"><li><strong>Utility and Efficiency:</strong> Prioritize utility, enabling faster and more efficient task completion.</li></ol><ol type="1" id="8906fff1-0847-4c14-8cfc-71ded5b6f3b9" class="numbered-list" start="3"><li><strong>Ease of Learning:</strong> Ensure the interface is easy to learn, focusing on tasks rather than extensive training.</li></ol><ol type="1" id="cebc7f92-af69-41df-a40f-ce929bba7304" class="numbered-list" start="4"><li><strong>Ease and Enjoyment:</strong> Emphasize a user-friendly experience that is both easy and enjoyable.</li></ol><ol type="1" id="dba957c8-cfd6-473d-a3b7-804e3ffa9fe0" class="numbered-list" start="5"><li><strong>Connector and Separator:</strong> interface should function as both a connector and a separator<ul id="3651dbfb-eb7f-4832-8196-21e9ba3ce6e4" class="bulleted-list"><li style="list-style-type:disc"><strong>C:</strong> Ties the user to the computer&#x27;s power.</li></ul><ul id="ee35dfe7-a1d6-4ce1-8372-c5258c3aa9ff" class="bulleted-list"><li style="list-style-type:disc"><strong>S:</strong> Minimizes the risk of users causing harm to each other.</li></ul></li></ol><hr id="99827d9e-395e-44c5-8149-56964ff68f71"/><p id="1d6bec92-cb9f-4f03-b9cb-dee6a96f42d0" class=""><strong>What is good design and its benefits </strong></p><p id="08ed5169-6dcf-49a0-8e32-03d53c747055" class="">Good design is the art of creating products, systems, or interfaces that are functional, aesthetically pleasing, and user-centered, ensuring they effectively serve their intended purpose.</p><p id="544a5614-102b-4224-9db6-3b7cddca9ab9" class=""><strong>Benefits of Good Design</strong></p><ul id="724783a7-8df4-4978-b51c-b8a913ad40e5" class="bulleted-list"><li style="list-style-type:disc"><strong>Screen Clarity</strong>: Good design enhances screen clarity.</li></ul><ul id="095d8ced-be2c-4fd9-a44e-2656bdda356e" class="bulleted-list"><li style="list-style-type:disc"><strong>Readability</strong>: It improves the readability of content.</li></ul><ul id="5eb2a8c6-0e37-4b41-b17d-5d90079815d3" class="bulleted-list"><li style="list-style-type:disc"><strong>Reduced Crowding</strong>: Well-designed screens are less crowded.</li></ul><ul id="a45c76e7-0f7d-4e9d-8341-8c84cb45294e" class="bulleted-list"><li style="list-style-type:disc"><strong>20% More Productivity</strong>: Users are about 20% more productive with less crowded screens.</li></ul><ul id="39854da8-0d3c-42a5-9da1-12f06520f13e" class="bulleted-list"><li style="list-style-type:disc"><strong>Training Cost Reduction</strong>: Good design lowers training costs due to reduced complexity.</li></ul><ul id="3349f936-8f2c-4947-87ca-41494974f67f" class="bulleted-list"><li style="list-style-type:disc"><strong>Support Costs</strong>: Fewer support calls are necessary, reducing support costs.</li></ul><ul id="a6d5df64-80c5-4b4c-9b04-c284292cc77e" class="bulleted-list"><li style="list-style-type:disc"><strong>Employee Satisfaction</strong>: Employees experience less frustration, increasing satisfaction.</li></ul><ul id="e4cd1267-fa58-4876-be51-5550cfff8b80" class="bulleted-list"><li style="list-style-type:disc"><strong>Customer Benefits</strong>: Improved service benefits the organization&#x27;s customers.</li></ul><ul id="222af050-a9c1-40de-98d4-05cbbbabc59e" class="bulleted-list"><li style="list-style-type:disc"><strong>Economic Benefits</strong>: Identifying and resolving design issues during development has economic advantages.</li></ul><ul id="3ec01ec2-f19d-4aa1-abf8-63fb99972f7a" class="bulleted-list"><li style="list-style-type:disc"><strong>Screen Usage</strong>: Consider the number of screens used daily in our technological world and organization.</li></ul><ul id="4fad9e70-50dd-46c9-834c-addc03609c51" class="bulleted-list"><li style="list-style-type:disc"><strong>Savings Potential</strong>: Proper screen design can lead to significant cost savings.</li></ul><ul id="43aef029-1e2c-4f5f-b253-0fe2903f5a65" class="bulleted-list"><li style="list-style-type:disc"><strong>PC Replacement Costs</strong>: Good design can also lower the costs of replacing malfunctioning PCs.</li></ul><hr id="c3ccbabb-9701-4fa4-bfff-7234c1f5c2c1"/><p id="f29b7db8-b51e-454d-9be3-5423b7b2bc4a" class=""><strong>User Interaction Speeds in Design</strong></p><table id="ba949174-6afe-4550-a3f0-b9d8672490e3" class="simple-table"><tbody><tr id="8f4051d5-8e41-4bdc-80cf-70725af5b8da"><td id="=&lt;XI" class="">Skill Category</td><td id="V^Bi" class="" style="width:446px">Context</td><td id="uIe`" class="" style="width:225px">Speed (WPM)</td></tr><tr id="5a49b5e6-a052-47a7-afe7-6cce60740800"><td id="=&lt;XI" class="">Reading</td><td id="V^Bi" class="" style="width:446px">Average adult reading speed (US)</td><td id="uIe`" class="" style="width:225px">250-300</td></tr><tr id="af319502-de51-4442-b4f4-c493b8957296"><td id="=&lt;XI" class=""></td><td id="V^Bi" class="" style="width:446px">RSVP (Rapid Serial Visual Presentation)</td><td id="uIe`" class="" style="width:225px">400-800</td></tr><tr id="13d5a598-689a-4816-bb70-992df5ae1afc"><td id="=&lt;XI" class=""></td><td id="V^Bi" class="" style="width:446px">Proofreading on paper</td><td id="uIe`" class="" style="width:225px">200</td></tr><tr id="419a2aa2-8cc4-45c8-abf2-2fff7f5b3d0a"><td id="=&lt;XI" class=""></td><td id="V^Bi" class="" style="width:446px">Proofreading on a monitor</td><td id="uIe`" class="" style="width:225px">180</td></tr><tr id="0262e790-7326-4dd9-9519-c8a03784c7c6"><td id="=&lt;XI" class="">Listening</td><td id="V^Bi" class="" style="width:446px">Comfortable listening rate</td><td id="uIe`" class="" style="width:225px">150-160</td></tr><tr id="14dada9f-70ec-4917-b9de-fdaedce2c71a"><td id="=&lt;XI" class=""></td><td id="V^Bi" class="" style="width:446px">Recommended rate for &quot;books on tape&quot; or narration</td><td id="uIe`" class="" style="width:225px">150-160</td></tr><tr id="5743cee4-b1a1-4c98-990f-bc8af245efb8"><td id="=&lt;XI" class=""></td><td id="V^Bi" class="" style="width:446px">Comprehension maintained at 210 wpm with compression</td><td id="uIe`" class="" style="width:225px">210</td></tr><tr id="8b024acc-55a5-4be2-ad17-82c2c8ec072d"><td id="=&lt;XI" class="">Speaking</td><td id="V^Bi" class="" style="width:446px">Dictation to computers</td><td id="uIe`" class="" style="width:225px">105</td></tr><tr id="329a39ca-3fd5-47a4-b527-5ab90fa3b8aa"><td id="=&lt;XI" class=""></td><td id="V^Bi" class="" style="width:446px">Speaking rate for transcription</td><td id="uIe`" class="" style="width:225px">Average of 25</td></tr><tr id="29ba29b0-515f-4151-921c-feb955a315ac"><td id="=&lt;XI" class=""></td><td id="V^Bi" class="" style="width:446px">New users for transcription</td><td id="uIe`" class="" style="width:225px">14 for transcription</td></tr><tr id="864a42ea-ee89-4dd3-9989-b7cadd5311f9"><td id="=&lt;XI" class="">Typing</td><td id="V^Bi" class="" style="width:446px">Fastest typists</td><td id="uIe`" class="" style="width:225px">Over 150</td></tr><tr id="504114a8-93a2-420c-a7df-0223e24c92cb"><td id="=&lt;XI" class=""></td><td id="V^Bi" class="" style="width:446px">Job requirements</td><td id="uIe`" class="" style="width:225px">60-70</td></tr><tr id="e99bfd30-6d93-47a5-8838-5a75d7cf933e"><td id="=&lt;XI" class=""></td><td id="V^Bi" class="" style="width:446px">Real-world typing speeds (average)</td><td id="uIe`" class="" style="width:225px">33 for transcription</td></tr><tr id="b3dba85e-9d97-44bb-b739-8784e2f91e73"><td id="=&lt;XI" class=""></td><td id="V^Bi" class="" style="width:446px">Typing skill groups. </td><td id="uIe`" class="" style="width:225px">Fastest (40+ wpm)<br/>Moderate (35 wpm)<br/>Slow (23 wpm)<br/></td></tr><tr id="169f3257-d3fd-4a4e-a705-24c69eeda1bf"><td id="=&lt;XI" class=""></td><td id="V^Bi" class="" style="width:446px">Two-finger typists</td><td id="uIe`" class="" style="width:225px">Memorized text at 37</td></tr><tr id="f2e6f7c9-f13c-444c-aba4-805f79b448bd"><td id="=&lt;XI" class="">Handwriting</td><td id="V^Bi" class="" style="width:446px">Handwriting speed for memorized text</td><td id="uIe`" class="" style="width:225px">31</td></tr><tr id="06308c64-d0ea-4115-89b9-263f38abff1e"><td id="=&lt;XI" class=""></td><td id="V^Bi" class="" style="width:446px">Handwriting speed for copying text</td><td id="uIe`" class="" style="width:225px">22</td></tr></tbody></table><hr id="5760ed63-7477-4525-85f3-018c612eb690"/><hr id="d4f92c91-de20-44b6-b12f-ba614631dcf7"/><p id="a1651829-4c04-47dc-b5e2-b66c2291165a" class="">Module 2</p><p id="8e5545a1-81a1-4ab7-81a6-3405875f93f3" class=""><strong>Information Retrieval on the Web:</strong></p><p id="109752f9-c616-4c8b-afa6-912217e35bba" class="">The internet is a vast space where users seek information or browse. Users, often impatient, prefer fast-loading, easy-to-navigate sites. If a website is slow or confusing, people are likely to avoid using it.</p><p id="d92ff8ed-2199-4855-b306-95da8679e8b6" class=""><strong>Initial Focus of Attention: </strong>Balance and weight of titles, text, graphics influence user attention. Studies show that Initial focus is on the page&#x27;s content.</p><p id="1eb3c6b3-4b6c-45b9-b81b-9edae70c8484" class=""><strong>Page Perusal: </strong>Users focus on text, especially headings, captions, summaries, and notes.</p><p id="514ad528-d5ea-4958-bc57-0efd8faf04fc" class="">Scanning and skimming are common methods.</p><table id="93402f49-ac55-4736-9149-ab3f6d7a6409" class="simple-table"><tbody><tr id="ba49ee90-84d3-4182-be51-39741e9dae02"><td id="kYgh" class="" style="width:211.984375px"><strong>Scanning Guidelines</strong></td><td id="pWpX" class="" style="width:649px"><strong>Points</strong></td></tr><tr id="85fb0137-2447-4778-bbaf-c9e29d3f19d7"><td id="kYgh" class="" style="width:211.984375px"><strong>Organization</strong></td><td id="pWpX" class="" style="width:649px">Minimize Eye Movement, Logical Groupings, Clear Organization</td></tr><tr id="f6732876-8008-4605-9ea8-7586805bf423"><td id="kYgh" class="" style="width:211.984375px"><strong>Writing</strong></td><td id="pWpX" class="" style="width:649px">Meaningful Title, Concise Writing, Inverted Pyramid Style, Lists and Tables, Concise Summaries</td></tr><tr id="27fcb7de-a23d-4494-90d8-f615e3ab1327"><td id="kYgh" class="" style="width:211.984375px"><strong>Presentation</strong></td><td id="pWpX" class="" style="width:649px">Highlighting, Emphasize Important Concepts</td></tr><tr id="7d85a6e5-daf8-478d-84c2-05d727d5b3c7"><td id="kYgh" class="" style="width:211.984375px"><strong>Browsing Guidelines</strong></td><td id="pWpX" class="" style="width:649px">Facilitate Scanning, Provide Multiple Layers of Structure, Easy Navigation, Respect User’s Desire to Leave, Help Users Reorient Themselves</td></tr><tr id="ba52fb8c-3f44-4974-8c83-978d5a889478"><td id="kYgh" class="" style="width:211.984375px"><strong>Searching</strong></td><td id="pWpX" class="" style="width:649px">Users search for specific goals, ranges from facts to multiple pieces of information.</td></tr><tr id="3ba9d859-2e80-4be4-bbeb-600b864d4e70"><td id="kYgh" class="" style="width:211.984375px"><strong>Search Facility Issues</strong></td><td id="pWpX" class="" style="width:649px">Not Understanding User, Difficulties in Formulating Search, Difficulties in Presenting Meaningful Results</td></tr><tr id="d2541281-d846-409a-978d-9a8417092176"><td id="kYgh" class="" style="width:211.984375px"><strong>Search Facility Guidelines</strong></td><td id="pWpX" class="" style="width:649px">Judged on Enabling Easy Information Retrieval</td></tr><tr id="156744a1-5208-4707-a845-536c31042e3b"><td id="kYgh" class="" style="width:211.984375px"><strong>Know Your Search User</strong></td><td id="pWpX" class="" style="width:649px">Identify User Expertise, Anticipate Queries, Information Nature and Type, Expected Results Amount, Plan for User Switching and Flexibility</td></tr></tbody></table><p id="3d04682b-e0ac-4504-bd9e-3ecef8f7acf1" class=""><strong>Presenting Meaningful Results:</strong></p><p id="5fcd399a-9242-45db-8cdc-da2d23785cea" class=""><strong>Goal</strong>: Provide relevant information.</p><p id="19ed09f3-8e27-4288-a941-5a9a7c10dc9d" class="">Present search criteria with results.</p><p id="1cb58795-f15d-43e3-ac20-1535f48b042d" class="">Clear explanations and result summaries.</p><p id="ef42e43e-53fb-440e-8e9c-c3e3b86f6be9" class="">Allow user modifications and clustering of results.</p><hr id="07c348ef-4b98-452a-8834-ebd3940b20fc"/><p id="97f7c488-0f5e-46e5-8463-94187da76757" class=""><strong>Statistical Graphics:</strong></p><p id="59ffa99c-bbb3-4045-b739-8d3a15042641" class="">Data presented in a graphical format. Well-designed statistical graphic, also referred to as a chart or graph, consists of complex ideas communicated with clarity, precision, and efficiency.</p><p id="cccceb37-d5e6-4252-ac89-9ac8d65a5e8d" class="">Components of a Statistical Graphic:</p><ul id="bbe6a3fd-ff69-4fcb-b979-f4fe27d88a37" class="bulleted-list"><li style="list-style-type:disc"><strong>Axes:</strong> Typically two, horizontal (X) and vertical (Y).</li></ul><ul id="140fe1f3-a88e-487a-a020-d337d5730a6b" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Presentation:</strong> Emphasize data, minimize non-data elements, and avoid unnecessary embellishment.</li></ul><ul id="afe4df2e-96c2-4f0e-b4e6-61f96334c197" class="bulleted-list"><li style="list-style-type:disc"><strong>Axes Values:</strong> Increase as they move away from the origin.</li></ul><ul id="9f06a170-534a-4b98-90f2-52c4d5f038e0" class="bulleted-list"><li style="list-style-type:disc"><strong>Scales and Scaling:</strong> Use linear scales, start numeric scale at zero, and provide aids for scale interpretation.</li></ul><ul id="26ee7f9a-fa7b-4cd9-8b62-5cb8becd39f3" class="bulleted-list"><li style="list-style-type:disc"><strong>Proportion:</strong> Ensure accurate proportion of displayed surfaces to the data they represent.</li></ul><ul id="e908466b-1496-4386-87fc-3b192a57ff25" class="bulleted-list"><li style="list-style-type:disc"><strong>Lines:</strong> Data lines should be heavier than axes lines, and grid lines should be thin or absent.</li></ul><ul id="0b4e8862-b990-4c36-9170-892b112f365e" class="bulleted-list"><li style="list-style-type:disc"><strong>Labeling:</strong> Detailed labeling integrated with the drawing; provide information about data.</li></ul><ul id="6f501b89-d640-43a9-b638-5f10a3661b65" class="bulleted-list"><li style="list-style-type:disc"><strong>Title:</strong> Create a short, clear title describing the purpose of the graphic.</li></ul><div id="bb28ebfc-a122-4f6b-8bff-6caea0e2f558" class="column-list"><div id="d19e5675-094c-4682-8dfa-c5d642468cad" style="width:62.5%" class="column"><p id="357f7457-ae81-4056-8a93-74418494744a" class=""><strong>Aiding Interpretation of Numbers:</strong></p><p id="9c538b9a-5563-4bd6-86fc-a62315f33062" class="">Display a grid on request.</p><p id="82c35122-01d6-4e03-ac90-4b771caa7ac8" class="">Allow viewers to click on a data point for actual values.</p><p id="2475834b-a8a5-4e92-a061-1448dfe430c1" class="">Show numeric values automatically for each point or bar.</p><p id="e1c4cb56-3d23-4569-9309-caa6c402f309" class="">Allow users to change scale values.</p></div><div id="731b9607-084b-461c-8f40-75963073fd57" style="width:37.5%" class="column"><figure id="b966f7e7-a1ae-45f5-9c52-16d07c7fa745" class="image"><a href="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%201.png"><img style="width:480px" src="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%201.png"/></a></figure></div></div><p id="364b56d5-7875-45ed-9fde-5faa3ca2e696" class=""><strong>Types of Statistical Graphics:</strong></p><ul id="e3dc57c9-355d-4177-8df8-808ae409681e" class="bulleted-list"><li style="list-style-type:disc"><strong>Curve and Line Graphs:</strong> Limit to four or five curves, highlight important data.</li></ul><ul id="57f7170c-ed91-40ba-9392-17bcb931c941" class="bulleted-list"><li style="list-style-type:disc"><strong>Surface Charts</strong>: Order data categories, use texture coding.</li></ul><ul id="223f2fb7-0ff9-449f-9ec3-d2f23bdb1a13" class="bulleted-list"><li style="list-style-type:disc"><strong>Scatterplots</strong>: Limit to two dimensions, maintain consistent scale.</li></ul><ul id="71d1584c-613e-46cc-97fb-72c158fa9824" class="bulleted-list"><li style="list-style-type:disc"><strong>Bar Graphs</strong>: Orient bars consistently, highlight important data.</li></ul><ul id="5d2bb5c5-9e57-4c86-8b8a-1988dd4c0fc2" class="bulleted-list"><li style="list-style-type:disc"><strong>Pie Charts: </strong>Use with caution, follow specific guidelines.</li></ul><p id="21a2fba7-2cc8-4538-aa6b-80a43596f235" class=""><strong>General Guidelines:</strong></p><p id="9253a6b2-f2f6-47d6-8210-c053bac8938d" class="">Keep it simple, clear, and precise. Maximize data density. Use consistent labeling and formatting.</p><hr id="9be9d7b0-abf9-471d-936e-8ec4e8e0cd77"/><p id="3c51eabd-225a-4f0d-9205-7982df79684b" class=""><strong>Importance of Human Characteristics - [</strong>PMMSVMIIMLSF]</p><table id="688e6328-2326-44a9-96dc-8e74049f42cb" class="simple-table"><tbody><tr id="5a76f4bc-2620-4753-af9a-f06c0446fde0"><td id="pNH@" class=""><strong>Characteristics</strong></td><td id="=Wr@" class="" style="width:566px"><strong>Description</strong></td></tr><tr id="2e1b6b59-0c72-4599-935a-0194b71d2682"><td id="pNH@" class=""><strong>Perception</strong></td><td id="=Wr@" class="" style="width:566px">Organizing and interpreting sensory information from the environment.</td></tr><tr id="ced32863-41ea-404b-8e63-8278351ab23c"><td id="pNH@" class=""><strong>Memory</strong></td><td id="=Wr@" class="" style="width:566px">Cognitive process of encoding, storing, and retrieving information.</td></tr><tr id="6962d7ab-c278-4ef9-8c03-2406b719bad9"><td id="pNH@" class=""><strong>Sensory Storage</strong></td><td id="=Wr@" class="" style="width:566px">Initial brief storage of sensory information before processing or forgetting.</td></tr><tr id="e4ad2e4a-ea58-485c-8133-a281e3aa2652"><td id="pNH@" class=""><strong>Visual Acuity</strong></td><td id="=Wr@" class="" style="width:566px">Clarity or sharpness of vision, influenced by eye health and brain processing.</td></tr><tr id="42b7041a-0df2-49d8-b660-c73b029a20bc"><td id="pNH@" class=""><strong>Mental Models</strong></td><td id="=Wr@" class="" style="width:566px">Cognitive frameworks individuals use to understand and represent their knowledge.</td></tr><tr id="e1a836d9-2730-41c2-81f1-1fd7a677d186"><td id="pNH@" class=""><strong>Information Processing</strong></td><td id="=Wr@" class="" style="width:566px">How the brain receives, interprets, and transforms incoming sensory data.</td></tr><tr id="d84c0f75-3b34-4cff-807b-f79e5d3965ea"><td id="pNH@" class=""><strong>Individual Differences</strong></td><td id="=Wr@" class="" style="width:566px">Variations among individuals in cognitive abilities, personality traits, etc.</td></tr><tr id="2f9cd387-99af-403a-8e16-29ec98627903"><td id="pNH@" class=""><strong>Movement Control</strong></td><td id="=Wr@" class="" style="width:566px">Coordination and execution of physical actions based on processed information.</td></tr><tr id="09f0c083-c4b1-4e05-bebc-125e964eccc0"><td id="pNH@" class=""><strong>Learning</strong></td><td id="=Wr@" class="" style="width:566px">Acquiring new knowledge, skills, or behaviors through experience or instruction.</td></tr><tr id="c98761cb-e7d3-43d1-993f-5eab649a90e4"><td id="pNH@" class=""><strong>Skill</strong></td><td id="=Wr@" class="" style="width:566px">Ability to perform a task effectively and proficiently through practice and experience.</td></tr><tr id="268b52d5-b0a0-4aaf-bc99-643db551b386"><td id="pNH@" class=""><strong>Foveal and Peripheral Vision</strong></td><td id="=Wr@" class="" style="width:566px">Detailed, focused vision (foveal) vs. wider field of view with less detail (peripheral).</td></tr></tbody></table><p id="86cdf50a-fdb3-484f-b0fb-7acfa1cbb910" class=""><strong>Human Consideration in Design</strong></p><table id="83ed8461-12b7-427f-9ca9-46a5ab989fee" class="simple-table"><tbody><tr id="8ab332a2-b8a3-44cf-b202-d2900e6cef2d"><td id="HEvG" class="" style="width:163px"><strong>Consideration</strong></td><td id="AW?Y" class="" style="width:562px"><strong>Description</strong></td></tr><tr id="c1208a65-39b5-47cd-bb83-eb9ade998484"><td id="HEvG" class="" style="width:163px"><strong>User&#x27;s Knowledge and Experience</strong></td><td id="AW?Y" class="" style="width:562px">Types of knowledge and experiences influencing interface design. System use, Task Experience, Education, Reading level, Typing level, Culture, Computer Literacy.</td></tr><tr id="9a8e05f7-276b-4f73-b9ed-c939766b023c"><td id="HEvG" class="" style="width:163px"><strong>Job/Task/Need</strong></td><td id="AW?Y" class="" style="width:562px">Factors such as system use, frequency, task importance, training, social interactions, primary training, job category.</td></tr><tr id="a35376c9-b06e-4146-8c34-d8001ed80ec0"><td id="HEvG" class="" style="width:163px"><strong>Psychological Characteristics</strong></td><td id="AW?Y" class="" style="width:562px">Attitude, motivation, patience, expectations, stress level, and cognitive style.</td></tr><tr id="ab02ce7a-19d2-4bb5-b88f-81c1d23bbe9c"><td id="HEvG" class="" style="width:163px"><strong>Physical Characteristics</strong></td><td id="AW?Y" class="" style="width:562px">Age, gender, handedness, disabilities, all impacting design considerations.</td></tr></tbody></table><hr id="cb2adf38-2460-432a-b043-84088d291244"/><p id="9d1eef69-e239-4a1f-9645-96cc8bce3a3e" class=""><strong>Technological Considerations in Interface Design</strong></p><p id="4b62f683-4037-41de-84bb-990baed1f6b3" class="">Interface design is also affected by the physical characteristics of the display device itself and the characteristics of the interfaces controlling software.</p><p id="d1f57d84-293a-4547-9627-3def13741917" class="">Graphical Systems</p><table id="7b9649f3-2750-4485-b65f-b00a2c677475" class="simple-table"><tbody><tr id="9c269503-d78a-484a-9cbc-4331b73b7840"><td id="[HdA" class=""><strong>Considerations</strong></td><td id="H|tK" class="" style="width:516px"><strong>Details</strong></td></tr><tr id="cd9eb853-38d3-4eae-a0d4-a82d2df390d4"><td id="[HdA" class=""><strong>System Compatibility</strong></td><td id="H|tK" class="" style="width:516px">Must align with system capabilities such as power, screen size, resolution, colors, and other features.</td></tr><tr id="2bd44552-e133-431d-85b8-4448c5a6faaf"><td id="[HdA" class=""><strong>Platform Compatibility</strong></td><td id="H|tK" class="" style="width:516px">Should be compatible with the system platform, development tools, and platform style guide.</td></tr></tbody></table><p id="a358834f-09fa-414b-878f-499d4ce8f1a0" class="">Web Systems</p><table id="f64e2789-16eb-4508-b0fb-d9dd590681fe" class="simple-table"><tbody><tr id="3bc8543f-18be-4995-9d15-d41616c44a7d"><td id="S}:U" class=""><strong>Considerations</strong></td><td id="hFRI" class="" style="width:489px"><strong>Details</strong></td></tr><tr id="5d7bb571-0788-4966-aced-dce265b0d45b"><td id="S}:U" class=""><strong>Current Web Technology</strong></td><td id="hFRI" class="" style="width:489px">Understand the current level of Web technology for effective design.</td></tr><tr id="001aff2f-00b5-4b64-967f-ad638c52f047"><td id="S}:U" class=""><strong>System Configuration</strong></td><td id="hFRI" class="" style="width:489px">Design for the system configuration used by the majority of users.</td></tr><tr id="ea10cbe9-5635-4352-9339-25361d21b3c4"><td id="S}:U" class=""><strong>Technology Usage</strong></td><td id="hFRI" class="" style="width:489px">Avoid haphazard use of leading-edge technology in web design.</td></tr></tbody></table><p id="68b7dd66-c7e9-4d40-b233-d015f2f6e418" class="">Browsers</p><table id="30d061c4-be2a-4ccf-b989-048a5b0a484a" class="simple-table"><tbody><tr id="c4237e37-4beb-4782-ba3b-2258f3f8192b"><td id="OsCT" class="" style="width:149px"><strong>Considerations</strong></td><td id="qADM" class="" style="width:639px"><strong>Details</strong></td></tr><tr id="662b7852-7849-4485-b750-129bf27664f8"><td id="OsCT" class="" style="width:149px"><strong>Compatibility</strong></td><td id="qADM" class="" style="width:639px">Ensure the website is accessible to all users&#x27; browsers and use browser defaults whenever possible.</td></tr><tr id="70f623ff-8e01-4053-9d27-5382ac5e4d8d"><td id="OsCT" class="" style="width:149px"><strong>Monitor Size and Resolution</strong></td><td id="qADM" class="" style="width:639px">Design within image-safe areas for all browsers and present images at appropriate resolutions.</td></tr><tr id="8f869e6e-6e33-4ce4-9a90-53508ec4c02e"><td id="OsCT" class="" style="width:149px"><strong>Fonts</strong></td><td id="qADM" class="" style="width:639px">Use fonts that can be displayed on various browsers.</td></tr><tr id="1232ec77-d9c0-47d4-a47e-ee8f7db621d7"><td id="OsCT" class="" style="width:149px"><strong>Colors</strong></td><td id="qADM" class="" style="width:639px">Utilize a palette of 216 colors that succeed on different browsers and platforms.</td></tr><tr id="370c7ca2-7647-4bcd-bfb2-49dd4cd67172"><td id="OsCT" class="" style="width:149px"><strong>Bandwidth</strong></td><td id="qADM" class="" style="width:639px">Design for the most commonly used bandwidth, considering 56-kbps modems for home users.</td></tr><tr id="1fe62891-221b-42a3-8be0-b70d56ddc06b"><td id="OsCT" class="" style="width:149px"><strong>Versions</strong></td><td id="qADM" class="" style="width:639px">Create multiple versions supporting different browsers, always providing a text-only version</td></tr></tbody></table><p id="80115300-9298-4ca8-a41d-0c00b09d8858" class="">Other Web Considerations</p><table id="25cc03a8-4a1a-4702-b42f-d8088e7d7200" class="simple-table"><tbody><tr id="35b0d9a7-a80c-4b21-9147-3e3558e90a79"><td id="|^GM" class="" style="width:133px"><strong>Considerations</strong></td><td id="Ms}{" class="" style="width:643px"><strong>Details</strong></td></tr><tr id="f62dec1b-4982-4a59-bf04-85070360eaba"><td id="|^GM" class="" style="width:133px"><strong>Downloading</strong></td><td id="Ms}{" class="" style="width:643px">Provide fast page download times, avoiding design techniques causing longer download times.</td></tr><tr id="40e94f80-799b-4353-98a6-6ed7c842ca25"><td id="|^GM" class="" style="width:133px"><strong>Information Provided</strong></td><td id="Ms}{" class="" style="width:643px">Offer enough information about downloads, including description, type, size, version, loading time, and operating requirements.</td></tr><tr id="6f083666-e53c-4164-9c9d-6335f9565513"><td id="|^GM" class="" style="width:133px"><strong>Currency</strong></td><td id="Ms}{" class="" style="width:643px">Keep website information current.</td></tr><tr id="14d4082c-d620-4813-ac07-709cb1fe9a7d"><td id="|^GM" class="" style="width:133px"><strong>Page Printing</strong></td><td id="Ms}{" class="" style="width:643px">Provide means to print groups of related pages, individual pages, and sections of pages.</td></tr><tr id="41891815-337a-4924-8f32-7d6d44c244c3"><td id="|^GM" class="" style="width:133px"><strong>Maintainability</strong></td><td id="Ms}{" class="" style="width:643px">Ensure easy maintainability of the website.</td></tr></tbody></table><hr id="fade2f7f-0004-4d54-8255-84825d4123e8"/><p id="d45e3a0e-365a-4103-94ba-8249b56dedb9" class=""><strong>Ordering of Screen Data and Content</strong></p><ul id="838ab0ad-94a4-41eb-b60b-5ff0cddc5757" class="bulleted-list"><li style="list-style-type:disc">Divide information logically and sensibly.</li></ul><ul id="0fcf2478-dcc6-4c2e-9fe2-98259c1b5162" class="bulleted-list"><li style="list-style-type:disc">Organize based on data interrelationship.</li></ul><ul id="196c1ada-08a7-4c7b-8208-90a1fb84af0c" class="bulleted-list"><li style="list-style-type:disc">Prioritize according to user needs.</li></ul><ul id="b19f10c6-1ffa-4d51-9989-2aa23bccc2dd" class="bulleted-list"><li style="list-style-type:disc">Consider ordering schemes: conventional, sequence, frequency, function, importance, general to specific.</li></ul><ul id="21931a72-978e-402a-9360-50959b8f97f5" class="bulleted-list"><li style="list-style-type:disc">Form comprehensive groups covering all possibilities.</li></ul><ul id="b857e756-a4fa-44ce-aefb-fa7783ecead2" class="bulleted-list"><li style="list-style-type:disc">Ensure simultaneous visibility of compared information.</li></ul><ul id="cebadaad-73e9-4a62-ac1c-e197662c1d88" class="bulleted-list"><li style="list-style-type:disc">Present task-relevant information only.</li></ul><p id="6a14e91c-9ad7-44fd-bb8b-2706554c9781" class=""><strong>Ordering Web Pages:</strong><div class="indented"><ul id="055d89b5-daaf-45ac-908c-bc5c32922e81" class="bulleted-list"><li style="list-style-type:disc">Establish importance levels for web content.</li></ul><ul id="9050dd64-0c70-449e-a24a-f0bb963a178c" class="bulleted-list"><li style="list-style-type:disc">Place critical information at the top.</li></ul><ul id="6b105af3-8024-4799-9a2e-36ca5cf4800e" class="bulleted-list"><li style="list-style-type:disc">Feature important items prominently.</li></ul><ul id="3571c1e4-ad43-4c0d-81fe-7ae134cee021" class="bulleted-list"><li style="list-style-type:disc">Organize information clearly.</li></ul><ul id="595dcc0d-7913-43c7-81fd-1afbec8f24ec" class="bulleted-list"><li style="list-style-type:disc">Maintain consistent item placement.</li></ul><ul id="2f9e918a-cbaa-4094-b367-1c0d78833490" class="bulleted-list"><li style="list-style-type:disc">Facilitate easy scanning.</li></ul><ul id="92e9acda-4eaa-45fc-80b0-d6fb35d2d5cd" class="bulleted-list"><li style="list-style-type:disc">Design for easy comparison.</li></ul></div></p><hr id="c3470d62-66f0-440e-9936-6ec07803d7bc"/><p id="166c4846-445d-433c-bcac-3e7ce94ae705" class=""><strong>Screen Navigation and Flow</strong></p><table id="ebf8d095-d9ec-4e85-a7b8-acc512213b9c" class="simple-table"><tbody><tr id="9d02d6d4-7396-42e7-b644-d531754b858a"><td id="eUhT" class="" style="width:367px"><strong>Def</strong></td><td id="_=IX" class="" style="width:350px"><strong>Rhythmic Ordering</strong></td></tr><tr id="463fa43b-d755-4298-a31c-b9a0c698134c"><td id="eUhT" class="" style="width:367px">Guide the eye rhythmically through the display. Encourage natural movement sequences. Minimize pointer and eye movement distances.</td><td id="_=IX" class="" style="width:350px">Locate important and frequently used elements at the top left. Maintain a top-to-bottom, left-to-right flow.</td></tr><tr id="bb8afd02-90a2-44b8-82d7-bae25e1f67b9"><td id="eUhT" class="" style="width:367px"><strong>Navigation Assistance</strong></td><td id="_=IX" class="" style="width:350px"><strong>Focus and Emphasis</strong></td></tr><tr id="ae463e04-bf09-4721-a128-3752ad658d58"><td id="eUhT" class="" style="width:367px">Align elements, Group elements, Use line borders.</td><td id="_=IX" class="" style="width:350px">Direct attention sequentially: Critical, Important, Secondary, Peripheral. </td></tr><tr id="1bd0cc8b-08a3-42f6-9b4e-894a0469c3b9"><td id="eUhT" class="" style="width:367px"><strong>Command Buttons</strong></td><td id="_=IX" class="" style="width:350px"><strong>Logical Breaks</strong></td></tr><tr id="790e6846-e8ce-43b5-8efa-432fee47c907"><td id="eUhT" class="" style="width:367px">Locate them at end of the tabbing order sequence</td><td id="_=IX" class="" style="width:350px">When breaking related information across screens, do so at logical or natural points.</td></tr><tr id="f3008089-e252-4671-8123-8996cf9fc8a8"><td id="eUhT" class="" style="width:367px"><strong>Eye Movement Considerations</strong></td><td id="_=IX" class="" style="width:350px"><strong>Top-to-Bottom Orientation</strong></td></tr><tr id="926cc66b-6156-41bd-b162-f00a7601c06e"><td id="eUhT" class="" style="width:367px">Dark areas to light areas.</td><td id="_=IX" class="" style="width:350px">Visual anchor point after moving away.</td></tr><tr id="2f9d7583-65cd-442c-9472-a6b7e642d6d9"><td id="eUhT" class="" style="width:367px">Big objects to little objects.</td><td id="_=IX" class="" style="width:350px">Shorter eye movements.</td></tr><tr id="04ca9167-ca9a-4c40-9854-9cbcd0701db8"><td id="eUhT" class="" style="width:367px">Unusual shapes to common shapes.</td><td id="_=IX" class="" style="width:350px">Shorter control movements.</td></tr><tr id="ba86c086-9363-41e6-8789-46ae9bdb5cb3"><td id="eUhT" class="" style="width:367px">Highly saturated colors to unsaturated colors.</td><td id="_=IX" class="" style="width:350px">Obvious perceptual groupings.</td></tr></tbody></table><hr id="b73d5e7b-d464-4128-bcc8-342858a2244d"/><p id="faa937a0-e24f-4fad-97e6-328c55cfd399" class=""><strong>Design Goals / Screen Design Goals / Interface Design Goals</strong></p><p id="3ab89ef1-ef56-4227-a09d-d85be53dfeef" class="">To make an interface easy and pleasant to use, the goal in design is to:</p><ul id="fc1d9a83-e7bf-4bbe-a3a7-a2c47ac35efc" class="bulleted-list"><li style="list-style-type:disc">Reduce visual work.</li></ul><ul id="b48b7c1f-3989-4d0f-8a33-8b24ff196df9" class="bulleted-list"><li style="list-style-type:disc">Reduce intellectual work.</li></ul><ul id="ac25ca3b-762d-4ee1-8b5a-f8a067f33fe8" class="bulleted-list"><li style="list-style-type:disc">Reduce memory work.</li></ul><ul id="99eef732-a925-40af-a4eb-dc74cc637d34" class="bulleted-list"><li style="list-style-type:disc">Reduce motor work.</li></ul><ul id="7ceff7be-d9b3-4be5-808d-117d6e7694c3" class="bulleted-list"><li style="list-style-type:disc">Minimize or eliminate any burdens or instructions imposed by technology.</li></ul><p id="5a1c8785-dece-4ccd-afd1-d0174c097ab3" class="">The result will always be improved user productivity and increased satisfaction.</p><hr id="831ec733-915b-4c86-9d1b-0be76741b53e"/><hr id="1b3988cc-a60f-449d-92a9-efd223cb95ca"/><hr id="349428f4-c4e0-4e8b-be5a-511b328b1732"/><p id="7be9c393-4dba-47ae-baeb-e231d61141a2" class="">Module 3</p><p id="a64f539e-788d-4ad6-b5c6-686a0a2d7f14" class=""><strong>Window: </strong>Rectangular screen areas for displaying application content.</p><ul id="c9447823-03f2-4935-a7de-a94ff24668ab" class="bulleted-list"><li style="list-style-type:disc">They can contain text, icons, images, and graphics.</li></ul><ul id="ac1310e0-b629-4d9f-817d-95e2bb047d14" class="bulleted-list"><li style="list-style-type:disc">Multiple windows can be open at once, with resizing, moving, minimizing, maximizing, and closing options.</li></ul><ul id="ff7a5354-fc1c-4d44-addc-f6c53965802c" class="bulleted-list"><li style="list-style-type:disc">Scrollbars aid in navigating long documents or content.</li></ul><ul id="e728f591-3a2e-433f-a1a6-6af03b302af9" class="bulleted-list"><li style="list-style-type:disc">Minimizing and maximizing windows is common and built-in for convenience</li></ul><p id="e72708ba-4417-4597-9bc7-2365a1d5e21b" class=""><strong>New and Navigation schemes selection of window</strong></p><table id="f32b6994-04ce-4c97-8363-d0dbf8442671" class="simple-table"><tbody><tr id="24e2c650-f6c2-465d-a705-c0cda06c0b55"><td id="B~iN" class=""><strong>Navigation Goals</strong></td><td id="&gt;qSI" class="" style="width:545px"></td></tr><tr id="a6a3d272-9b3f-4904-8d7f-6bb2926e74ef"><td id="B~iN" class=""><strong>User Orientation</strong></td><td id="&gt;qSI" class="" style="width:545px">Ensure users always know where they are, where they from, where they can go.</td></tr><tr id="46660b1f-dcc2-48e9-a4d9-abeadaade8af"><td id="B~iN" class=""><strong>Control</strong></td><td id="&gt;qSI" class="" style="width:545px">Offer simple actions for returning to higher-level menus and the main menu.</td></tr><tr id="72f4efae-75db-40cf-b850-bb3689fcfc3b"><td id="B~iN" class=""><strong>Multiple Paths</strong></td><td id="&gt;qSI" class="" style="width:545px">Provide various routes through menu hierarchies.</td></tr><tr id="665494a9-9de3-4f34-8226-a76ae2bc928b"><td id="B~iN" class=""><strong>Navigation Aids</strong></td><td id="&gt;qSI" class="" style="width:545px">Include menu maps, look-ahead options, and navigation history.</td></tr></tbody></table><table id="298af347-0568-4ce4-be07-cf51a4b8c4dc" class="simple-table"><tbody><tr id="8b2ac41e-95e3-4436-ba2e-f762d3453735"><td id="S]?{" class=""><strong>Web Site Navigation</strong></td><td id="hOeD" class="" style="width:479px"></td></tr><tr id="6d71dce8-9fd6-4143-a9fd-dfe97d46a175"><td id="S]?{" class=""><strong>User Knowledge</strong></td><td id="hOeD" class="" style="width:479px">Don&#x27;t assume users know as much as designers.</td></tr><tr id="0f2c24b3-1811-4329-8cec-217d44b0c437"><td id="S]?{" class=""><strong>Entry Points</strong></td><td id="hOeD" class="" style="width:479px">Any page can be an entry point.</td></tr><tr id="95c38d56-a28a-46a8-92b9-82b7fa88e37f"><td id="S]?{" class=""><strong>Organization</strong></td><td id="hOeD" class="" style="width:479px">Divide content logically and create a hierarchy.</td></tr><tr id="f8332f2c-40c2-45e6-b276-19880125868d"><td id="S]?{" class=""><strong>Components</strong></td><td id="hOeD" class="" style="width:479px">Use sensible, available, obvious, consistent, and textual links.</td></tr><tr id="fc7bcf10-be3d-4445-9e4f-06dd3582fb88"><td id="S]?{" class=""><strong>Browser Buttons</strong></td><td id="hOeD" class="" style="width:479px">Integrate controls within the application.</td></tr><tr id="23483a6b-057e-455f-8cc9-fe2314676413"><td id="S]?{" class=""><strong>Navigation Bars</strong></td><td id="hOeD" class="" style="width:479px">Use global and local bars for navigation.</td></tr><tr id="d3a66e95-fe26-47c0-994d-4e5cd5ea8c5d"><td id="S]?{" class=""><strong>Textual and Graphic Links</strong></td><td id="hOeD" class="" style="width:479px">Mix textual and graphical links.</td></tr></tbody></table><table id="dd523377-3a32-47f3-bc3b-223846ea7b51" class="simple-table"><tbody><tr id="9c0cd4e8-1963-4ed5-a6f7-7872cdc83260"><td id="[e\_" class=""><strong>Selection of Window</strong></td><td id=":ZoG" class="" style="width:501px"></td></tr><tr id="d346873b-e99b-4a3f-a6a1-ed6b00940db3"><td id="[e\_" class=""><strong>Window Characteristics</strong></td><td id=":ZoG" class="" style="width:501px">Name, size, state, visibility, location, function.</td></tr><tr id="f4995e93-36ec-4af5-8365-526c830419c6"><td id="[e\_" class=""><strong>Attraction of Windows</strong></td><td id=":ZoG" class="" style="width:501px">Present information effectively.</td></tr><tr id="b241aeae-579f-4ed2-9385-fca2d482d601"><td id="[e\_" class=""><strong>Constraints</strong></td><td id=":ZoG" class="" style="width:501px">Consider historical, hardware, and human limitations.</td></tr><tr id="c7ecae8f-a7b3-4a4a-a537-b89287a6ad38"><td id="[e\_" class=""><strong>Window Management</strong></td><td id=":ZoG" class="" style="width:501px">Choose between single and multiple-document interfaces.</td></tr><tr id="6b715b14-e508-4939-ba78-8cf0c44b5fea"><td id="[e\_" class=""><strong>Organizing Functions</strong></td><td id=":ZoG" class="" style="width:501px">Organize windows for user tasks.</td></tr></tbody></table><table id="0958f06d-62f5-4cb3-8b01-595166624c1f" class="simple-table"><tbody><tr id="43638bac-8b70-4539-b9ee-25a107313b49"><td id="JGBV" class=""><strong>Window Operations</strong></td><td id="[AzR" class="" style="width:473px"></td></tr><tr id="2286b9f8-bfdb-49f1-bd29-c8a91b6ec53d"><td id="JGBV" class=""><strong>Active window</strong></td><td id="[AzR" class="" style="width:473px">Make switching easy and visible.</td></tr><tr id="7b0e11c2-cf04-4e85-9333-038c4f81fe1a"><td id="JGBV" class=""><strong>Opening a window</strong></td><td id="[AzR" class="" style="width:473px">Use icons or lists, display each object in a separate window.</td></tr><tr id="5c7263af-fdc0-4092-96a8-45448e33a97c"><td id="JGBV" class=""><strong>Sizing windows</strong></td><td id="[AzR" class="" style="width:473px">Ensure they show relevant information.</td></tr><tr id="f0d057eb-eae4-4d40-bc62-9c3cfb4e8dee"><td id="JGBV" class=""><strong>Window placement</strong></td><td id="[AzR" class="" style="width:473px">Keep windows fully visible.</td></tr><tr id="c300903d-be97-4517-917b-b442d0df194e"><td id="JGBV" class=""><strong>Window separation</strong></td><td id="[AzR" class="" style="width:473px">Clearly distinguish windows.</td></tr><tr id="f071c327-6359-4917-9ca4-cf5985ae4c8b"><td id="JGBV" class=""><strong>Moving and Resizing</strong></td><td id="[AzR" class="" style="width:473px">Allow users to adjust windows.</td></tr></tbody></table><hr id="af2aa77e-f27f-4b05-8b57-bdbdf8e19220"/><p id="494becda-bb97-41d0-a939-c625840b5144" class=""><strong>Selection of devices-based controls</strong></p><p id="094e14ea-3a92-439b-9ceb-0ec3517c9010" class="">Device-based controls, often called input devices, are the mechanisms through which people communicate their desires to the system.</p><p id="70133f38-dc01-44f1-8bba-30768e3c79bd" class="">Adv All = Direct hand-pointer relationship</p><table id="ef3f6f02-ff90-473a-bc2f-9d9cbcf96846" class="simple-table"><tbody><tr id="0c840ddb-44ae-4e80-a124-564bd5cf47d1"><td id="ED|p" class="">Tool</td><td id="v}E&gt;" class="" style="width:306px">Characteristics</td><td id="czU{" class="" style="width:374px">Disadvantages</td></tr><tr id="5442af39-5ca6-4433-8075-599f5fe5444c"><td id="ED|p" class=""><strong>Trackball</strong></td><td id="v}E&gt;" class="" style="width:306px">Spherical object, rotates freely</td><td id="czU{" class="" style="width:374px">Limited precision, especially for fine movements</td></tr><tr id="5bb1d5e8-e395-4258-a01f-dbb57ed40bbf"><td id="ED|p" class=""><strong>Joystick</strong></td><td id="v}E&gt;" class="" style="width:306px">Variable in size, cursor direction movement</td><td id="czU{" class="" style="width:374px">Limited accuracy for detailed tasks</td></tr><tr id="0c4f3598-81a9-4776-9ada-c2bacb7faf38"><td id="ED|p" class=""><strong>Graphic Tablet</strong></td><td id="v}E&gt;" class="" style="width:306px">Pressure-sensitive surfaces, operated with fingers or stylus</td><td id="czU{" class="" style="width:374px">Requires hand removal from the keyboard</td></tr><tr id="35d0ab17-af8b-4332-8b10-c694838c1cce"><td id="ED|p" class=""><strong>Touch Screen</strong></td><td id="v}E&gt;" class="" style="width:306px">Sensitive to touches, no additional desk space</td><td id="czU{" class="" style="width:374px">Finger may obstruct view of the screen</td></tr><tr id="67fc950b-e96e-40f0-bdeb-1a749f571442"><td id="ED|p" class=""><strong>Light Pen</strong></td><td id="v}E&gt;" class="" style="width:306px">Sensitive to touch of stylus or pen, minimal additional desk space</td><td id="czU{" class="" style="width:374px">Requires lifting to activate, interrupting workflow</td></tr><tr id="367f75cb-7ccc-44c5-bd9c-85406fa27910"><td id="ED|p" class=""><strong>Voice</strong></td><td id="v}E&gt;" class="" style="width:306px">Automatic speech recognition</td><td id="czU{" class="" style="width:374px">High error rates, especially in noisy environments</td></tr><tr id="720ac92e-3cee-4d72-9dc3-b8d70860380a"><td id="ED|p" class=""><strong>Mouse</strong></td><td id="v}E&gt;" class="" style="width:306px">Movable desktop control, contains one to three buttons</td><td id="czU{" class="" style="width:374px">Limited use without a flat surface, may require long movement distances</td></tr><tr id="685e5979-80d0-4a5c-ade7-85cfe23b223f"><td id="ED|p" class=""><strong>Keyboard</strong></td><td id="v}E&gt;" class="" style="width:306px">Standard typewriter keyboard, cursor movement keys</td><td id="czU{" class="" style="width:374px">Slower for tasks requiring continuous pointing</td></tr></tbody></table><p id="9cab9f01-f44d-4cf4-bd74-fb33718842b7" class=""><strong>Selection of screen- based controls</strong></p><table id="a257d3b9-83ec-4c56-9f77-8c1f092f8a2d" class="simple-table"><tbody><tr id="1f72e034-af41-4787-bef0-b3292127d365"><td id="ygHh" class="" style="width:292px">Control Type</td><td id="?=n}" class="" style="width:443px">Characteristics</td></tr><tr id="b4dbdc94-5157-4108-ba0f-a55cec043d4e"><td id="ygHh" class="" style="width:292px"><strong>Operable Controls</strong></td><td id="?=n}" class="" style="width:443px">Buttons. Square or rectangular with labeled actions</td></tr><tr id="351b331d-a7a5-4300-bdf5-908ecfe580a1"><td id="ygHh" class="" style="width:292px"><strong>Text Entry/Read-Only Controls</strong></td><td id="?=n}" class="" style="width:443px">Rectangular, for entering or displaying text, flexible and compact</td></tr><tr id="8788d79c-f9fe-45b8-9513-9804ea01e5da"><td id="ygHh" class="" style="width:292px"><strong>Selection Controls</strong></td><td id="?=n}" class="" style="width:443px">Radio buttons, Check boxes</td></tr><tr id="260e9a58-f1b3-401f-b4dd-9d8306719c74"><td id="ygHh" class="" style="width:292px"><strong>Combination Entry/Selection Controls</strong></td><td id="?=n}" class="" style="width:443px">Spin box: Single line field with directional buttons, Combo Boxes: Text box with dropdown list</td></tr><tr id="62624e5b-1221-457e-a491-656cfb82885f"><td id="ygHh" class="" style="width:292px"><strong>Presentation Controls</strong></td><td id="?=n}" class="" style="width:443px">Static Text Fields, Group checkboxes: 2 Radio buttons</td></tr></tbody></table><hr id="eb3cedba-a7fe-4b96-b80f-81638e97bf44"/><p id="acb261a5-bf72-4ad9-b220-28ff6f285f5e" class=""><strong>Components</strong> in the context of user interface design refer to the various elements that make up the visual and interactive aspects of a software application or system. </p><p id="0e612f88-1545-4f1c-843b-52a552e9764d" class="">Text, messages, icons, colors, buttons, controls, and other visual elements that users interact with to navigate, input information, and receive feedback.</p><p id="96d2d81a-d3bf-40a1-bf2f-fe33dfe67489" class=""><strong>Icons: </strong>visual images representing objects and actions for user interaction.</p><p id="2a7a4b2a-9096-4b97-94f4-bc672eb5dcd3" class="">They can stand alone or be grouped in toolbars on desktops or windows. Icons reinforce information, like warning symbols in dialog boxes.</p><p id="d03f1c6b-cd2d-4000-bab2-203db3010b66" class=""><strong>Kinds of Icons</strong></p><ul id="0a256b3f-154f-43f3-9de4-e51294d289e3" class="bulleted-list"><li style="list-style-type:disc"><strong>Resemblance:</strong> Looks like what it means, e.g., a book icon.</li></ul><ul id="60bd1c83-2e93-49f8-9df6-10b347b94b2f" class="bulleted-list"><li style="list-style-type:disc"><strong>Symbolic:</strong> Abstract representation, e.g., cracked glass for fragility.</li></ul><ul id="4842ff28-f732-48c6-9203-8d1692d9814f" class="bulleted-list"><li style="list-style-type:disc"><strong>Exemplar:</strong> Illustrates a characteristic, e.g., a knife and fork for a restaurant.</li></ul><ul id="9002e37b-fc01-4abb-a20c-0ff7b7a3208a" class="bulleted-list"><li style="list-style-type:disc"><strong>Arbitrary:</strong> Learned meaning, not directly related.</li></ul><ul id="148ea356-58ad-47fe-ba88-f7c964525386" class="bulleted-list"><li style="list-style-type:disc"><strong>Analogy:</strong> Associated physically or semantically, e.g., a wheelbarrow of bricks for the move command.</li></ul><p id="be3f5c0f-da80-4bbe-983a-c9da75751384" class=""><strong>Characteristics of Icons</strong></p><ol type="1" id="11f454c9-bc1f-422b-a54b-a6c0321f7d5a" class="numbered-list" start="1"><li>Icons have syntax (structure), semantics (meaning), and pragmatics (production).</li></ol><ol type="1" id="027e0f2a-e879-447c-b984-35ee6c3901d4" class="numbered-list" start="2"><li><strong>Syntax:</strong> Includes shape, color, and size for classification.</li></ol><ol type="1" id="e84e008b-1951-4d7d-bf56-a0f18f5f730d" class="numbered-list" start="3"><li><strong>Semantics:</strong> Represents meanings like files or wastebaskets.</li></ol><ol type="1" id="a043cf19-a1d6-49f2-9acb-459024e8e993" class="numbered-list" start="4"><li><strong>Pragmatics:</strong> Involves physical production, considering screen resolution.</li></ol><ol type="1" id="1df3351d-5b13-423a-816c-e5cd3c36be0e" class="numbered-list" start="5"><li>Effectiveness is determined by syntax, semantics, and pragmatics.</li></ol><p id="1edf9f87-fe85-404b-a779-049319df71f7" class="">
+</p><p id="8420d91b-ea74-4a1c-ab0a-58a5eae198c3" class=""><strong>Colors:</strong> Aiding in communication, organization, and visual appeal. </p><ul id="50803759-bfa0-4d41-b3a6-ba46b694a198" class="bulleted-list"><li style="list-style-type:disc">Assist in formatting, grouping, and highlighting.</li></ul><ul id="e9b67457-9341-479b-a204-1f0144beb24e" class="bulleted-list"><li style="list-style-type:disc">Serve as visual codes for identification.</li></ul><ul id="3c96b07b-daec-4a43-bb85-283029d2dcca" class="bulleted-list"><li style="list-style-type:disc">Realistically portray natural objects.</li></ul><ul id="adeaf663-8238-4821-abde-95a8ad38ded4" class="bulleted-list"><li style="list-style-type:disc">Increase screen appeal.</li></ul><p id="e6ec9ee2-baf4-4994-b3e0-040f215baea4" class=""><strong>Choosing Colors:</strong><div class="indented"><p id="d2bc25aa-6e13-44b1-bafa-d8ba8bec333a" class="">Organize, contrast, sequence, or group information effectively.</p><p id="30f24770-6138-4206-a403-69e54e47681f" class="">Never rely solely on color for identification.</p></div></p><p id="db341f8d-9c9f-46e0-91de-e6f658079f69" class=""><strong>Color in Context:</strong><div class="indented"><ul id="25d7d1e7-b6de-4cb6-9949-017c0b6f49d6" class="bulleted-list"><li style="list-style-type:disc">Subject to contextual effects.</li></ul><ul id="b01cf9a2-6170-4fd1-9979-2d0c754267a3" class="bulleted-list"><li style="list-style-type:disc">Design for monochrome first for compatibility.</li></ul><ul id="8be43868-6115-4af5-b9d7-96697a66f128" class="bulleted-list"><li style="list-style-type:disc">Use colors conservatively.</li></ul><ul id="4607ff92-3aab-444c-ba2f-1ceb7c40bf95" class="bulleted-list"><li style="list-style-type:disc">Consider alternative identification techniques.</li></ul></div></p><hr id="11d17c97-384a-46fe-aec3-47fa905060ad"/><p id="debf0b8e-6e68-42e9-81cf-996dc8ad4de6" class=""><strong>Explain the different types of messages.</strong></p><p id="e59f9674-246b-4d5a-aca1-6793cb190d2c" class="">Communication provided on the screen to the screen viewer. </p><p id="37538b02-1ea0-4e79-abda-ec92a7b8c37d" class=""><strong>System Messages:</strong></p><p id="b9ebbf01-f6e4-445d-af3c-5ea5e5ca9dcc" class=""><strong>Status Messages: </strong>Update users on lengthy operations with progress indicators.</p><p id="b32963ab-45f5-461f-a08e-66e21e734db5" class=""><strong>Informational Messages: </strong>Share general information, often marked with an &quot;I&quot; icon.</p><p id="78b6527b-2113-48a6-bfe5-d6e45843bc48" class=""><strong>Warning Messages: </strong>Seek user decisions on potentially problematic actions (&quot;!&quot; icon).</p><p id="9ecbaccb-cda5-4308-a102-aa21f59af44e" class=""><strong>Critical Messages:</strong> Demand immediate user action, often marked with &quot;Do Not&quot; or &quot;Stop&quot; signs.</p><p id="3b76acab-f3b8-4ecd-b101-46b0f9d8446f" class="">Q<strong>uestion Messages: </strong>Ask questions and provide choices with a &quot;?&quot; icon.</p><p id="8f637e91-4eff-4ec3-be03-c0a9b7f8ef77" class=""><strong>Instructional Messages:</strong></p><ul id="9992ca2b-174b-4b58-bd47-0653b9772d43" class="bulleted-list"><li style="list-style-type:disc">Offer guidance on interacting with the screen.</li></ul><ul id="654f0f60-c121-43a9-9d13-c879b3c3cbfc" class="bulleted-list"><li style="list-style-type:disc">Tailor instructional information to the user&#x27;s required detail level.</li></ul><ul id="2fd6fdd7-567b-4fd8-99df-9b36bdd82473" class="bulleted-list"><li style="list-style-type:disc">Visually distinguish instructional messages from other screen elements.</li></ul><hr id="1c623c91-92b4-474a-a401-2c6ed0a40993"/><p id="a2182c70-2dd3-4920-b5d8-0d124071bca6" class=""><strong>Foreground colours. - </strong>Crucial role in enhancing visibility and emphasizing elements within a UI. </p><ol type="1" id="53ed4cc7-b5f4-4d7e-a6f3-51bc094f1be1" class="numbered-list" start="1"><li><strong>Contrast for Readability: </strong>To<strong> </strong>create high contrast with the background for optimal readability, particularly in text and data.</li></ol><ol type="1" id="87d5ae29-2d7d-4ada-a55b-90d2f80bd20a" class="numbered-list" start="2"><li><strong>Text and Data Considerations: </strong>Choose black for text on a light-color background with low intensity. For dark backgrounds, use desaturated spectrum colors like white, yellow, or green to enhance visibility.</li></ol><ol type="1" id="24a7be03-2042-4fb8-95aa-cf342d746b2d" class="numbered-list" start="3"><li><strong>Emphasis and De-emphasis:</strong><p id="f6b601cf-6b1d-4f9e-a025-ac5a9e1dd7a4" class="">Highlight important elements with a light value of the foreground color, pure white, or yellow.</p><p id="723c9e4c-71c0-4416-bd94-5999f1da8474" class="">De-emphasize elements by using a dark value of the foreground color to lowlight them.</p></li></ol><ol type="1" id="728cddfe-2f02-4b4a-84ac-881a11ae911f" class="numbered-list" start="4"><li><strong>Warm and Active Colors: </strong>Consider warmer and more active foreground colors to add vibrancy and engagement to the interface.</li></ol><hr id="21cda5a6-94d0-4e43-8d6a-95a356dcd766"/><hr id="1e8d6e0a-3fd9-4bf1-a000-39ba7f74173f"/><hr id="20595298-e535-484a-84d6-010a7b2ba632"/><p id="ebc8ffa5-a9be-4b55-aaf2-658a98d32965" class="">Module 4</p><p id="3391fcef-a34a-42ef-97e3-d3f4ae4c06a5" class=""><strong>Standard golden rules-principles -  </strong>[CSFCERUM]<strong>     </strong></p><p id="a27e18ee-d0a5-4554-86da-a98550007982" class="">1. <strong>Consistency:</strong> Maintain consistency in layout, terminology, and actions.<br/>2. <br/><strong>Shortcuts:</strong> Enable frequent users to utilize shortcuts for quicker actions.<br/>3. <br/><strong>Feedback:</strong> Provide informative feedback for user actions.<br/>4. <br/><strong>Closure:</strong> Design dialogs for task completion clarity.<br/>5. <br/><strong>Error Handling:</strong> Prevent errors and offer clear instructions for recovery.<br/>6. <br/><strong>Reversibility:</strong> Allow easy reversal of actions for user exploration.<br/>7. <br/><strong>User Control:</strong> Support internal locus of control, putting users in charge.<br/>8. <br/><strong>Memory Load:</strong> Reduce short-term memory load with simple displays and clear sequences.</p><hr id="6e788c22-0097-4940-b6bc-e3297d1759df"/><p id="b50d0618-6768-4698-b1a6-7e94a8b11631" class=""><strong>Universal design - </strong>Aims to create interfaces that are accessible and usable by everyone in any situation. It goes beyond accommodating disabilities, striving for inclusivity across diverse user experiences, cultures, and languages.</p><p id="5768f0ed-80c4-4382-a2e3-316f8a882355" class=""><strong>Principles:</strong></p><ol type="1" id="b30a9af6-e34a-4bed-abdc-578ffe0f392d" class="numbered-list" start="1"><li><strong>Equitable Use: </strong>Design for inclusivity, catering to diverse abilities. <p id="7256220d-3943-4b49-89f8-cf84ea8866cc" class=""><span style="border-bottom:0.05em solid">Example</span>: Use colors and symbols for color-blind users.</p></li></ol><ol type="1" id="9c57d992-0823-44a6-a3e1-5a7ca892fa67" class="numbered-list" start="2"><li><strong>Flexibility in Use: </strong>Offer choices to adapt to user preferences. <p id="87d3715c-121d-449e-a4a1-99b97d0ae7ab" class=""><span style="border-bottom:0.05em solid">Example</span>: Customizable cursor speeds.</p></li></ol><ol type="1" id="847548e6-2c65-4298-a87f-94c5630ad535" class="numbered-list" start="3"><li><strong>Simple and Intuitive: </strong>Ensure easy understanding for all users. <p id="1b446cf5-1228-4896-bd40-a9057f083d0e" class="">Provide feedback and intuitive navigation.</p></li></ol><ol type="1" id="f91efcc7-e7d4-47ed-8dcd-bab1b2a55444" class="numbered-list" start="4"><li><strong>Perceptible Information: </strong>Communicate effectively in varied conditions. <p id="4c00387d-179f-42af-b3b4-852a99af3e40" class="">Use text, symbols, and sound.</p></li></ol><ol type="1" id="f88395d8-4c27-4ac0-890f-2ee558da422f" class="numbered-list" start="5"><li><strong>Tolerance for Error: </strong>Prevent errors, minimize consequences, and offer undo options.</li></ol><ol type="1" id="3b3e354c-8360-4349-ae56-081f3f41668b" class="numbered-list" start="6"><li><strong>Low Physical Effort: </strong>Design for comfortable use with minimal effort. <p id="ace04472-c555-4c5f-905a-52bd92ee4d2c" class="">Reduce unnecessary movement.</p></li></ol><ol type="1" id="f87b40c5-b8da-42cb-8203-e91ba30c185e" class="numbered-list" start="7"><li><strong>Size and Space: </strong>Allow comfortable reach, considering differences in height and posture. <p id="8b45aa47-4c81-4332-a378-5e40f5ef5cf6" class="">Size elements appropriately.</p></li></ol><hr id="65769bcc-c078-44a6-adfa-5dea52817d52"/><p id="6781f50d-3dd2-44e0-81dc-078bcdcfe104" class=""><strong>Iterative design and prototyping Design</strong></p><p id="be904d88-21a8-4186-a2ae-9b8c08a6ca9f" class="">Methods used in the design process to overcome challenges arising from incomplete requirements. Prototypes, which simulate system features, play a crucial role in this iterative approach. Three main prototyping approaches are:</p><ol type="1" id="ed58603d-1ada-4314-b5a8-fb4257f5b748" class="numbered-list" start="1"><li><strong>Throw-away Prototyping:</strong><ul id="a70506a4-5e43-4b28-9718-d19303286d8a" class="bulleted-list"><li style="list-style-type:disc">Prototype is built and tested.</li></ul><ul id="06562a75-dfc4-4867-aac9-b0acf7b7f009" class="bulleted-list"><li style="list-style-type:disc">Design knowledge gained informs the final product.</li></ul><ul id="e3e25ae9-524d-489a-83b1-9bfbaa2c3288" class="bulleted-list"><li style="list-style-type:disc">The actual prototype is discarded.</li></ul><figure id="8ecd0d8c-cd06-4690-b40c-b813f1c18f11" class="image"><a href="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%202.png"><img style="width:480px" src="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%202.png"/></a></figure></li></ol><ol type="1" id="4286c70f-d306-4aaa-a014-58a2ddefc096" class="numbered-list" start="2"><li><strong>Incremental Prototyping:</strong><ul id="6eaea1df-97be-4db7-8e81-d0750126ce5e" class="bulleted-list"><li style="list-style-type:disc">Final product built in separate components.</li></ul><ul id="382fa516-1a5d-4fcd-a0ec-a51c18dee183" class="bulleted-list"><li style="list-style-type:disc">Overall design partitioned into smaller, independent components.</li></ul><ul id="7e98d54a-9ce4-40c1-8392-71ed7e339976" class="bulleted-list"><li style="list-style-type:disc">Subsequent releases add one more component each time.</li></ul></li></ol><figure id="dd00f59f-8f85-4e0b-8185-a8c17c5610de" class="image" style="text-align:left"><a href="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%203.png"><img style="width:432px" src="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%203.png"/></a></figure><ol type="1" id="373e4e79-4a51-4a0b-b14d-904b7198d8c8" class="numbered-list" start="3"><li><strong>Evolutionary Prototyping:</strong><ul id="ee19635e-ca0e-4b4a-b1b9-ff979a90c95c" class="bulleted-list"><li style="list-style-type:disc">Prototype serves as the basis for the next iteration of design.</li></ul><ul id="cf0d3db1-2a97-40db-b031-7ad99af4ad7e" class="bulleted-list"><li style="list-style-type:disc">System evolves from a limited initial version to the final release.</li></ul></li></ol><hr id="f25b1c08-1f79-4f48-b595-cb16c8cb2980"/><p id="b8b667e9-9372-4cac-a8ae-1941eabafce8" class=""><strong>Design rules to support us justify</strong></p><p id="a417b9af-0899-48a8-a147-f345d5ad57c7" class="">Designing for maximum usability is the central goal of interactive systems, and achieving this objective involves adhering to a set of design rules that guide the development process.</p><p id="bdd89ce6-b4b4-43bd-af3c-abff4c03d623" class=""><strong>Maximizing Usability - </strong>Goal: Ensure interfaces are intuitive and efficient for users.</p><p id="a66d5a4c-2cff-418e-8b69-119fa3218dab" class=""><strong>Abstract Principles - </strong>Framework: Understand usability conceptually for effective design.</p><p id="2901584e-dfed-45f5-9582-1cc1b37ef1ee" class=""><strong>Standards and Guidelines - </strong>Direction: Provide specific guidance for enhancing interactive properties.</p><p id="77c5d21e-fc17-434d-a96f-37f48fc3215a" class=""><strong>Golden Rules or Heuristics - </strong>Essentials: Summarize key characteristics for optimal design.</p><p id="9e312835-4b72-4ad7-b95d-cd7b62c0b676" class=""><strong>Design Patterns - </strong>Generative Solutions: Offer proven reusable approaches for consistent design.</p><hr id="4058ba54-74aa-4631-aab6-b31ed3da7759"/><p id="3840b2df-2070-4b25-84df-4eeaea51c210" class="">Design Rationale in HCI</p><p id="b4d49eb6-f5ea-4e77-8a78-1cfc2af02f15" class=""><strong>Assessing Alternatives: </strong>Designers choose options (e.g., menu display) and document trade-offs in the rationale.</p><p id="9a1b6fea-3222-440c-83c7-7c8a2aae6c3e" class=""><strong>Avoiding Missing Optimal Solutions: </strong>Designers check rationale to ensure all options, especially better ones, are considered.</p><p id="59e86964-0e33-440f-b3ba-a1a14be0b7a9" class=""><strong>Reusing Design Rationales: </strong>Prior rationales are reused for consistency in related interfaces.</p><p id="920213f0-70b0-448f-acd6-284ee1f5bfd1" class="">
+</p><p id="130c8a6b-dc9d-423c-93e8-67c3c86b8193" class=""><strong>Types of Design Rationales</strong></p><div id="b65e980c-ea6f-4d10-8b68-5abc6820e96c" class="column-list"><div id="b22bb8d5-8239-488b-afd7-e9b7a7b5cced" style="width:50%" class="column"><p id="65128827-2da1-4400-b673-42f8f234e689" class=""><strong>Process-Oriented Design Rationale:</strong></p><p id="a908d6b2-5d2c-4426-b471-996170f759a0" class="">Captures decisions as they occur, using IBIS notation </p><p id="b12d38d1-3b2e-4dd9-b799-925dc1401cd0" class="">(Issue, Positions, Arguments, Sub-issues).</p><p id="81f7925f-b941-44b5-8717-254625c0c7b0" class=""><span style="border-bottom:0.05em solid">Example</span><em>:</em> IBIS graphically represents process-oriented design rationale.</p></div><div id="94752286-d6d7-4ce9-8dc7-52e1ee0ef9dd" style="width:50%" class="column"><figure id="8f80e6a8-2938-4153-9db0-3b56128b2727" class="image"><a href="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%204.png"><img style="width:532px" src="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%204.png"/></a></figure></div></div><div id="2723e68e-907e-41c5-931c-8585654071e6" class="column-list"><div id="3b801e52-4812-4074-9223-785b20f8cf9b" style="width:56.25%" class="column"><p id="7e464d56-1b4a-41af-b766-798577a7b792" class=""><strong>Structure-Oriented Design Rationale:</strong></p><p id="52a9be16-67ae-44d2-9c41-2794c3372803" class="">Organizes decisions after considering alternatives, using QOC notation </p><p id="30b3b9e8-974f-4971-a6fa-bc047d2fd4a1" class="">(Questions, Options, Criteria).</p><p id="a5f7475c-dfea-4ca3-a3a2-4fd88c0d4387" class=""><span style="border-bottom:0.05em solid">Example</span><em>:</em> QOC illustrates structure-oriented design rationale.</p></div><div id="f0767919-8f95-4887-a3b4-2a5bcc0f65b4" style="width:43.75000000000001%" class="column"><figure id="058bcdd0-4f57-498c-9bf9-d70ce75b90a3" class="image"><a href="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%205.png"><img style="width:360px" src="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%205.png"/></a></figure></div></div><p id="f4ba1e82-ab5c-4aba-9d1a-4459b99ea4d2" class=""><strong>Psychological Design Rationale</strong></p><ul id="ad01d9ce-cc0f-4638-b7c2-e21f76334e00" class="bulleted-list"><li style="list-style-type:disc">Supports task-artifact cycle, making consequences explicit.</li></ul><ul id="4da12921-b038-4935-b2fd-75266a5a69ac" class="bulleted-list"><li style="list-style-type:disc">Designers define tasks, propose scenarios, and observe users.</li></ul><ul id="3cdefdbc-be8e-4a66-bc39-73c5e4d326ab" class="bulleted-list"><li style="list-style-type:disc">Claims about the system&#x27;s psychology are made explicit.</li></ul><ul id="eb9234bf-05cb-4033-9d23-c961e0f4794c" class="bulleted-list"><li style="list-style-type:disc">Negative aspects inform improvements in the next design iteration.</li></ul><p id="1a550d6e-e3a7-44ac-b1c6-5f6fa5c3a8e3" class="">
+</p><hr id="02722688-b249-40bb-9591-4a85f1c158e6"/><p id="5bcf95a5-6d41-4ff1-8ac8-abcfbe2bd4ac" class=""><strong>Software life cycle.</strong></p><p id="3cb1719c-6250-4221-91c5-cb76dc4aedad" class="">Two main parties: customer (requiring product) and designer (providing it), often overlapping.</p><p id="c3db2082-46de-49e2-aa33-1b67c1a861d5" class="">Crucial to distinguish between client and eventual user.</p><p id="355d64d2-a259-444e-a434-1ea3288b27fc" class="">Graphical representation resembles a waterfall, symbolizing the logical flow of activities in the software life cycle.</p><div id="3601eaa5-7ca5-482f-a6eb-fc35786e04f1" class="column-list"><div id="6d40620d-4830-49e6-877b-c1a90e4aa5e6" style="width:43.75%" class="column"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="98a4d9dd-1478-4ffb-9c56-1bb229d962dd" class="code"><code class="language-Plain Text">Requirements Specification
+Architectural Design 
+Detailed Design 
+Coding and Unit Testing 
+Integration and Testing 
+Operation and Maintenance</code></pre><p id="74ebd28f-2493-4528-a969-2aebfb42db3d" class="">
+</p></div><div id="f6b8ee87-2319-4bdb-82c8-47b7786455ea" style="width:56.25%" class="column"><figure id="e2765927-9211-48c0-9a63-9d233c3df528" class="image" style="text-align:left"><a href="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%206.png"><img style="width:480px" src="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%206.png"/></a></figure></div></div><ol type="1" id="28b8f75d-ad55-4b0e-b890-e3af418dd598" class="numbered-list" start="1"><li><strong>Requirements Specification: </strong>Initiates product development, translating customer requirements with precision through task analysis.</li></ol><ol type="1" id="ac9c3a9f-1a85-44d0-b561-3dd1b75e614a" class="numbered-list" start="2"><li><strong>Architectural Design: </strong>Focuses on system service provision and component decomposition.</li></ol><ol type="1" id="66dad024-ccc8-4695-952a-bd0214c361e8" class="numbered-list" start="3"><li><strong>Detailed Design: </strong>Refines architectural design with detailed implementation.</li></ol><ol type="1" id="df2a55da-3c0c-4080-a82e-3e3aa7bdb58d" class="numbered-list" start="4"><li><strong>Coding and Unit Testing: </strong>Implements designs, ensuring correctness through unit testing.</li></ol><ol type="1" id="d645e95b-c030-4610-959e-760a1174b6e9" class="numbered-list" start="5"><li><strong>Integration and Testing: </strong>Integrates components based on design, tests for correct behavior.</li></ol><ol type="1" id="9bc46c8a-3d3a-4b8c-924c-a27fcfae958d" class="numbered-list" start="6"><li><strong>Maintenance Operation: </strong>Involves post-release error correction and service revision.</li></ol><p id="9b52dfd2-d632-4827-91c2-24ff5de6254f" class="">Extra - </p><div id="b78835ea-5ee4-4845-993c-26968afd04f7" class="column-list"><div id="e1e32a67-ecf5-4403-a26b-9a57cacaa49b" style="width:50%" class="column"><p id="4425f759-ebb6-4e2c-91a3-f05476e2ada5" class=""><strong>Validation and Verification: </strong></p><p id="18db7108-d6a7-499f-972d-6c9c76ca83f0" class="">Verification ensures right product design; </p><p id="cb727732-1c78-4a07-9ae6-b410a8262c9c" class="">validation ensures the right design with a formality gap relying on subjective proof.</p></div><div id="aabdce4a-7b07-48cf-af4b-605b5f568d82" style="width:50%" class="column"><figure id="3cbbf36e-f423-46e3-88c3-b22ffc151bc4" class="image"><a href="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%207.png"><img style="width:479px" src="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%207.png"/></a></figure></div></div><div id="5262b5eb-12fd-47aa-bc75-26fb0cc7f3b9" class="column-list"><div id="f04852dd-15bd-44af-a2bd-f4c7bf1eb860" style="width:56.25%" class="column"><p id="bd4e2fa8-8718-47ba-8717-2d9219df19ae" class=""><strong>Management and Contractual Issues: </strong>Considers design in commercial and legal contexts.</p><p id="10d6c7ac-350f-4902-96b1-7f1915d26884" class="">
+</p></div><div id="4b6597a6-b94c-4e29-b8da-0e93d8f58858" style="width:43.75%" class="column"><figure id="b695298a-b020-4f50-86e4-3af0a01cf413" class="image"><a href="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%208.png"><img style="width:288px" src="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%208.png"/></a></figure></div></div><div id="dd21a85c-2ddf-4baf-a41e-e03c27f01750" class="column-list"><p id="e9981c0f-3664-4ecf-a07e-bad6d1540bd7" class=""><strong>Interactive Systems and Software Life Cycle:</strong></p><p id="ffed38d3-5b1c-4c12-8465-6522cc09d4a6" class="">Acknowledges iterative design, addressing the traditional life cycle&#x27;s lack of user perspective.</p></div><hr id="4be962ad-2450-45ea-8412-9f90aaea9441"/><hr id="c051b738-dcc6-4c16-8c63-9a91aded87fd"/><hr id="b5529a2c-001f-4d98-8407-9e90f8b02947"/><p id="42a83762-762d-4816-9e28-61762208bdc8" class="">Module 5</p><p id="9b7410d7-a0c5-4441-a241-2821145a24e6" class=""><strong>Cognitive models </strong>Offering a framework to simulate human problem-solving. They represent the designer&#x27;s intended mental model for user-system interaction, encompassing ideas about system organization and operation.</p><ol type="1" id="6799d9fa-7606-434e-b58a-04dd58a650da" class="numbered-list" start="1"><li><strong>Hierarchical Representation: </strong>Cognitive models break tasks into steps for a hierarchical approach.</li></ol><ol type="1" id="c84e562f-637a-4610-93dc-cd8fa3489f0b" class="numbered-list" start="2"><li><strong>Linguistic and Grammatical Models: </strong>Focus on user input alignment with system understanding.</li></ol><ol type="1" id="b33b26e1-b00e-423c-9f04-82515d3cfb89" class="numbered-list" start="3"><li><strong>Physical and Device-Level Models: </strong>Crucial for designing intuitive user-device interactions.</li></ol><p id="c2e196ee-8f51-492b-8cd1-1e2fc7ffa540" class="">
+</p><p id="22ef73a5-67db-46a7-b190-26ac9b6d5eec" class=""><strong>Goal and Task Hierarchies:</strong></p><p id="6bb83155-2493-4c31-be70-7e53be1bc953" class=""><strong>Goals: </strong>User goals serve as memory points, aiding evaluation and error correction.</p><p id="169a691d-4a5e-4291-b73a-2f82a0612708" class=""><strong>Operators: </strong>Basic actions required for system use, from key presses to mental processes.</p><p id="9a45756a-3782-4694-8033-8cf9ae342159" class=""><strong>Methods: </strong>Systematic breakdown of goals into subgoals, enhancing task efficiency</p><p id="20554934-244f-4a32-9ae9-67e31e1100ed" class=""><strong>Selection: </strong>Predictive method selection based on user characteristics and system state.</p><p id="fcd6abd4-e861-46c0-bac2-f8eba60c0dd5" class=""><span style="border-bottom:0.05em solid"><strong>Example Scenario</strong></span><strong>:</strong> Sending a text message</p><ul id="9c71aac6-5426-4eab-bce4-245ac2b974da" class="bulleted-list"><li style="list-style-type:disc"><strong>Goal:</strong> Send a text message.</li></ul><ul id="6b389d61-71b8-43c4-bd5a-6f1700f259d7" class="bulleted-list"><li style="list-style-type:disc"><strong>Operators:</strong> Unlock phone, open messaging app, type message, send.</li></ul><ul id="1f6b4f5b-45fb-459b-89b8-3340451eecb5" class="bulleted-list"><li style="list-style-type:disc"><strong>Methods:</strong> Standard method - use fingers for typing, or Voice-to-Text method.</li></ul><ul id="63c23b57-caa6-421a-a8a9-e6f42dc1dd8d" class="bulleted-list"><li style="list-style-type:disc"><strong>Selection Rules:</strong> Choose the method based on user preference or accessibility needs.</li></ul><p id="a9acdc9c-7784-4c1f-ba67-1d4f74b8365c" class="">
+</p><p id="daf1e74f-35ec-4cc4-9e6a-abcb6bf4ef85" class=""><strong>CCT (Cognitive Complexity Theory):</strong><br/>Focuses on hierarchical task decomposition, considering cognitive complexity and representing error behavior for a nuanced understanding.<br/></p><p id="90e8ed39-8ec7-4188-91bd-4cf39727ff0f" class=""><strong>Example Scenario:</strong> Online Shopping</p><ul id="5973f033-482e-4755-b63f-8caa81bcdfcb" class="bulleted-list"><li style="list-style-type:disc"><strong>Cognitive Complexity:</strong> Choosing a product involves evaluating multiple options.</li></ul><ul id="6267cc84-cfd9-4a09-87d0-626d53a2694a" class="bulleted-list"><li style="list-style-type:disc"><strong>Hierarchy:</strong> User navigates through categories, filters, and product details.</li></ul><ul id="22e0fc57-9c5f-4219-b51b-a9a668464808" class="bulleted-list"><li style="list-style-type:disc"><strong>Error Representation:</strong> CCT accounts for potential errors, like selecting the wrong size, in the decision-making process.</li></ul><hr id="447e99be-a1ff-4089-8f8e-12c36c5fd136"/><p id="e2d6966f-37d0-4fb5-9bc8-c8a584c0e334" class=""><strong>GOMS Save money</strong></p><ol type="1" id="e62fe1c2-2c0f-48db-86bc-358a0ff6c65a" class="numbered-list" start="1"><li>Boosts efficiency, saving time and resources.</li></ol><ol type="1" id="11648f34-142a-4c47-aa39-e83e8da496f9" class="numbered-list" start="2"><li>Minimizes errors, reducing costly mistakes.</li></ol><ol type="1" id="bf5a4171-8a35-4c27-8f73-ea6928a01cc4" class="numbered-list" start="3"><li>Optimizes task allocation for workforce efficiency.</li></ol><ol type="1" id="215508ab-cca9-4ef8-8cd2-a399615dd45e" class="numbered-list" start="4"><li>Cuts training time, lowering onboarding costs.</li></ol><ol type="1" id="56384cce-9b6a-4617-ac8b-228ebf83e46e" class="numbered-list" start="5"><li>Identifies and eliminates operational bottlenecks.</li></ol><ol type="1" id="6f0ae515-e619-49e4-b30e-a343120f442d" class="numbered-list" start="6"><li>Improves user satisfaction, lowering support expenses.</li></ol><ol type="1" id="6f420807-a150-4361-beb1-befe44cec9e8" class="numbered-list" start="7"><li>Speeds up development, saving on project timelines.</li></ol><ol type="1" id="6f3765d1-1821-4263-885a-f85bf9cc1f95" class="numbered-list" start="8"><li>Enables effective resource allocation, preventing wastage.</li></ol><ol type="1" id="150e3b59-18d6-476f-abdc-2815167b9954" class="numbered-list" start="9"><li>Enhances system performance, reducing operational costs.</li></ol><ol type="1" id="38b86368-9be2-4577-a448-7b23833243b6" class="numbered-list" start="10"><li>Streamlines processes for overall cost savings.</li></ol><hr id="dd030cde-6cee-47ff-88e3-0d28d615a691"/><p id="38f13231-ac5d-4de8-a754-6027b9352223" class=""><strong>Applications of augmented reality</strong></p><p id="4796c9b4-37be-4496-935e-c48ca1b42eda" class="">Diverse range of applications across various industries, enhancing user experiences by overlaying digital information onto the real world.</p><p id="607c7092-fa2c-4c7d-bc14-85bc813df717" class=""><strong>1. Maintenance: </strong>Guides technicians with step-by-step instructions for efficient repairs.</p><p id="b72028ff-cdb8-45bd-826b-60416b826b8d" class=""><strong>2. Healthcare: </strong>Aids surgeries, enhances medical training, provides real-time patient information.</p><p id="24fa8b96-ff84-4412-aa28-3e75d6604f87" class=""><strong>3. Education: </strong>Brings learning to life with interactive content and virtual experiences.</p><p id="ac6fc81c-8ad9-450c-b4cf-57bf299f627f" class=""><strong>4. Retail: </strong>Enables virtual try-ons and enhances the shopping experience.</p><p id="ea9a15ff-7ad8-47b1-b34b-02fae85a292f" class=""><strong>5. Gaming: </strong>Transforms gaming with interactive and dynamic elements.</p><p id="44fd7591-d38a-4a22-9c5a-81cf17be6e55" class=""><strong>6. Design: </strong>Visualizes architectural projects for real-world context.</p><p id="4c25840a-8106-43fd-a1c1-912ab59563c5" class=""><strong>7. Navigation: </strong>Improves navigation with real-time directions and information.</p><p id="8c915b67-0ae9-42bb-a66d-4b959af112a3" class=""><strong>8. Training: </strong>Simulates industrial scenarios for safe training.</p><p id="32863743-8de8-49d6-bc70-0e38e85011bf" class=""><strong>9. Tourism: </strong>Enhances tourism with real-time information about landmarks.</p><p id="9e504cab-50a3-4b6c-b665-b431823de322" class=""><strong>10. Advertising: </strong>Creates interactive ads triggered by physical materials for engaging campaigns.</p><hr id="c30b789a-31d1-4f03-bffc-ab31e9b1bbf4"/><p id="1146cff4-1c59-4ce2-b2e5-db31fa0a540f" class=""><strong>Ubiquitous Computing:</strong> Involves integrating computers seamlessly into the real world, allowing human interaction beyond a single workstation.</p><p id="2ae7b777-54d7-4dc6-88a4-3fd4dba8702a" class=""><strong>Scales of Devices:</strong><div class="indented"><ul id="0ba09a50-178e-4a3d-a50a-eb1a1d1f4f88" class="bulleted-list"><li style="list-style-type:disc"><em>Inch:</em> Small devices like PDAs, smartphones, voice recorders.</li></ul><ul id="d197c2ec-b529-4fb8-aa45-f776c4b60077" class="bulleted-list"><li style="list-style-type:disc"><em>Foot:</em> Medium-sized devices like notebooks, tablets, digital paper.</li></ul><ul id="3ee2bbd8-fa4a-4bc4-9286-55fa1ae4e65b" class="bulleted-list"><li style="list-style-type:disc"><em>Yard:</em> Large devices like electronic whiteboards, plasma displays, smart bulletin boards.</li></ul></div></p><p id="c54624f7-7233-4302-a8ba-c9df934859bb" class=""><strong>Defining the Interaction Experience:</strong></p><ul id="3f533c02-6532-4e65-8524-e09972b33a67" class="bulleted-list"><li style="list-style-type:disc">Implicit Input: Sensor-based input, extending beyond traditional explicit input methods.</li></ul><ul id="5f8e08a3-cda6-43e0-9213-5349c0acc3cd" class="bulleted-list"><li style="list-style-type:disc">Multi-scale and Distributed Output: Various screen sizes, distributed in space but coordinated.</li></ul><p id="44bce063-b589-49c0-97d9-f5c7203554b8" class=""><strong>Merging Physical and Digital Worlds: </strong>Removing barriers between physical and electronic actions. Output from the electronic world superimposed on the physical world.</p><p id="a16e27fc-6bd8-4843-b6f3-effa0e777ebb" class=""><strong>Application Themes:</strong></p><ul id="37b205b3-d0f7-49e5-9189-cb7ac97c3d8d" class="bulleted-list"><li style="list-style-type:disc"><strong>Context-Aware Computing: </strong>Sensed phenomena facilitate easier interaction.</li></ul><ul id="e0b03dc8-917b-470d-a7d0-e71199863869" class="bulleted-list"><li style="list-style-type:disc"><strong>Automated Capture and Access: </strong>Live experiences stored for future access.</li></ul><ul id="f72d6925-99c7-4bea-984a-0b044009cbf8" class="bulleted-list"><li style="list-style-type:disc"><strong>Toward Continuous Interaction: </strong>Everyday activities without clear begin-end conditions.</li></ul><p id="53d466b3-50b2-411b-9e22-a0a7bdcdbbd0" class=""><strong>Virtual Reality (VR):</strong></p><ul id="31c4da6d-4a7a-474b-82dc-eca8737c68e1" class="bulleted-list"><li style="list-style-type:disc"><strong>Technology:</strong> Headsets, gesture recognition, eye gaze, whole-body position sensing.</li></ul><ul id="f3c09ac3-753d-40f7-8250-035dcffced2b" class="bulleted-list"><li style="list-style-type:disc"><strong>Immersive Experience:</strong> Simulation of the real world, engaging multiple senses.</li></ul><ul id="1545f059-3c8a-438d-be7c-e1d2e476089b" class="bulleted-list"><li style="list-style-type:disc"><strong>On the Desktop:</strong> Desktop VR using ordinary monitors and PCs, as seen in games and VRML.</li></ul><p id="31e46e1d-bc2b-43c4-84dc-731cbfae42e3" class=""><strong>Augmented Reality (AR):</strong></p><ul id="d22ade5e-37ca-414e-b14a-be937f63a102" class="bulleted-list"><li style="list-style-type:disc"><strong>Projection Over Real World:</strong> <p id="704a81af-8fac-4087-85c7-438ba2cdfdd4" class="">Images projected onto the real world, e.g., head-up displays, semi-transparent goggles.</p></li></ul><ul id="381fd6f5-6d2b-4e08-aecd-7968243502c2" class="bulleted-list"><li style="list-style-type:disc"><strong>Types of Information:</strong> <p id="e9ffd867-bc41-4e53-8500-b6bb9063aec9" class="">Unrelated (e.g., reading email), related (virtual objects interacting with the real world).</p></li></ul><p id="90e4e1b5-baaf-4274-81ab-12531c74d7c4" class=""><strong>Applications of VR and AR:</strong></p><p id="661662a1-0c15-4563-a086-619bc188be99" class=""><strong>VR Applications:</strong> Simulation (games, military, training), VR holidays, medical applications (surgery, phobia treatment).</p><p id="badb8ae2-e92a-4584-8348-1999020f8221" class=""><strong>AR Applications:</strong> Maintenance instructions, overlays for engineers (e.g., photocopier, aircraft wiring looms).</p><hr id="c5e32dc2-0a9a-4832-9ffe-311b706d5c4a"/><p id="74e84134-5b8b-4fac-b698-dff8e2c445f3" class=""><strong>Information and Data Visualization: VR, 3D, and 2D Displays</strong></p><p id="3c0c2d34-a5d1-42ee-9369-d2fafab60a06" class="">VR, 3D, and 2D Displays simplify complex data, enhancing user understanding through interactivity.</p><p id="56fbdeb9-3e52-4c3a-b4a9-66258caf9a3f" class=""><strong>Scientific and Complex Data Visualization:</strong></p><p id="9d739a83-5f41-4576-bc7e-8a4163b59564" class=""><strong>Virtual Dimensions:</strong></p><ul id="57ee2851-a625-48aa-a5cb-63fa7fbbc379" class="bulleted-list"><li style="list-style-type:disc">3D: Represents invisible fields (e.g., virtual wind tunnel).</li></ul><ul id="9d3899d2-c18b-4675-b058-c6034e81f57b" class="bulleted-list"><li style="list-style-type:disc">2D: Projects data, especially for geography.</li></ul><ul id="5c1cc859-aac9-4bf7-9715-d4d318ffb28b" class="bulleted-list"><li style="list-style-type:disc">No &#x27;real&#x27; dimensions: Uses 2D/3D histograms, scatter plots, pie charts.</li></ul><p id="b4c20f0a-168d-4009-ad6b-5b8245cf5fde" class=""><strong>Virtual Wind Tunnel:</strong></p><p id="b715a8ee-4220-45ba-b09c-264cf1434353" class="">Fluid Dynamics Simulation: Uses virtual bubbles for cost-effective and faster airflow illustration.</p><p id="c4c3b583-3b50-4116-ad27-033973b0a1d1" class=""><strong>Structured Information Visualization:</strong></p><p id="7d522f6a-c3e2-4605-9a12-2841d37468f1" class=""><strong>Scientific Data:</strong> Visualizes numerical data.</p><p id="d6c1c869-0d62-4ef9-b88d-393f328b1569" class=""><strong>Information Systems:</strong> Includes hierarchies, networks, and free text.</p><p id="b275fccf-63e3-480b-9e4a-60e1774282de" class=""><strong>Hierarchies:</strong> Represented through file trees, organization charts.</p><div id="b5563d5a-8fd3-47a1-8329-19c89c6747ff" class="column-list"><div id="7ed74ad8-8406-4e23-942f-ad210a701e63" style="width:50%" class="column"><p id="b3d617c2-9eb4-4ba2-a1ad-721f938deed7" class=""><strong>Networks in 2D:</strong></p><p id="d8a43f49-a3ef-4025-bfc7-de791841ed63" class="">Nodes (e.g., web pages) connected by links.</p><p id="db04c3d7-b0ee-43cd-b146-85957843d415" class="">Planar networks can be without crossings </p><p id="707ec714-71f0-4184-8cf9-c3c9502f6584" class="">non-planar networks have crossings.</p></div><div id="0d91008b-da6b-4bdf-87b4-519d7ab5a26e" style="width:50%" class="column"><figure id="abf2722b-674a-4e84-86ea-9b6e478cbb2f" class="image"><a href="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%209.png"><img style="width:288px" src="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%209.png"/></a></figure></div></div><p id="9643672a-5e0a-4ede-9066-438d39cde2cd" class=""><strong>Time and Interactivity:</strong></p><p id="72cf4b79-da6e-46e2-a768-e268b2a9b0e3" class=""><strong>Visualizing in Time:</strong></p><ul id="2ce56e3f-50cf-4cb1-8636-854b5dfd4291" class="bulleted-list"><li style="list-style-type:disc">Mapping the time dimension to space.</li></ul><ul id="fa102045-f28a-4087-9b3d-dcd33f30b0c5" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Examples</span>: Changing values (sales graphs), events (Gantt charts), lifelines for medical and court records.</li></ul><p id="70e926a3-7cf0-4a75-9c48-555fbe0e7c57" class=""><strong>Using Time:</strong></p><ul id="5ff95ad0-6607-4188-bc08-ac8191c39fe3" class="bulleted-list"><li style="list-style-type:disc">Mapping data dimensions to time.</li></ul><ul id="1fce6feb-21ff-4e3c-bfe9-db9de2dc1d0f" class="bulleted-list"><li style="list-style-type:disc">Time manipulation, like fast/slow replay of events and spatial representation over time <p id="7206b137-8297-4fcd-8cdc-8f1bb2501af9" class="">(e.g., Visible Human Project).</p></li></ul><p id="2e057587-4c28-4c84-bc8d-5b1fabe0c944" class=""><strong>Interactivity: </strong>User-controlled changes demonstrated by tools like the Influence Explorer.</p><hr id="0bb4ca43-560b-4fab-85eb-5bd8e266b2ca"/><p id="622f46ba-e49d-48f9-b0ad-938dcbe0f3a9" class=""><strong>LINGUISTIC MODELS</strong></p><p id="09bf4c3d-39b6-4e70-985d-53c58c5b614f" class="">Formal systems designed to analyze and describe user-computer interactions using language.</p><p id="5374978f-6caf-41d2-bb97-1d0807aaf69d" class="">BNF, TAG which help understand user behavior and cognitive aspects in system dialogues.</p><p id="dab206c3-72fc-4225-9db4-f22c2f0ea99a" class=""><strong>1. Backus-Naur Form (BNF): </strong>Describes dialog grammar at a syntactic level.</p><p id="f8b87661-360d-4ac1-a8c0-926b4ff3c74e" class=""><strong>Syntax Specification:</strong> Commonly used for programming languages and system dialogs.</p><p id="4f61dca4-cb53-4a0f-a03b-c173961ffa16" class=""><span style="border-bottom:0.05em solid">Example</span><strong>:</strong> Graphics system line-drawing function represented using terminals and non-terminals.</p><p id="3f73d926-a314-453d-9e8a-9fd55cf6b04b" class=""><strong>Measurements:</strong> Evaluated by the number of rules, + and | operators, considering complications like syntax-semantics mismatch.</p><p id="19a17f75-0208-4fcf-beed-f6bbf3c47781" class=""><strong>2. Task–Action Grammar (TAG):</strong></p><p id="f87a8636-ba0f-493d-ba97-1c59f1776055" class=""><strong>Critique of BNF:</strong> BNF measures criticized for lacking cognitive depth and consistency.</p><p id="ae74a31f-9cae-4901-af4c-af9a23e78fef" class=""><strong>TAG Features:</strong><div class="indented"><p id="5d472e64-86a3-4155-b574-b92944b88da1" class=""><strong>Consistency Emphasis:</strong> Aims to enhance language structure and command name consistency.</p><p id="4d744496-7db6-4267-b460-7b4e89f62539" class=""><strong>World Knowledge Encoding:</strong> Uses parametrized grammar rules to encode user&#x27;s world knowledge.</p></div></p><p id="bf94e28c-b279-4d9a-ae93-8031c8f93cd4" class=""><strong>Consistency in TAG:</strong> Explicit representation of consistency using UNIX commands as an example.</p><p id="3843a688-8d99-49dd-9680-1e6ff7a1c4d3" class=""><strong>Other Uses of TAG:</strong> Models user&#x27;s existing knowledge, congruence between features and commands, and includes derived rules.</p><hr id="d2cc1329-109c-49ff-b1f3-57c31a4bc86e"/><p id="1d1d277b-2045-491b-909b-0c3cd43016a1" class=""><strong>Cognitive Architectures:</strong><br/>Explores the human mind&#x27;s structure for intelligent behavior. It utilizes cognitive psychology to create computer-based models, serving as blueprints for artificial intelligence. <br/></p><p id="dd63c89e-a334-4e64-a164-e5e2c6047980" class="">Beyond theory, it embodies a hypothesis about universal aspects of human cognition, implemented as executable software.</p><figure id="b4ff6f62-f114-4a8c-952c-ecb3842bf4f3" class="image"><a href="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%2010.png"><img style="width:576px" src="HCI%2032f284d179334ff5b3cdffa0a828c4fc/Untitled%2010.png"/></a></figure><p id="15d7c716-9042-40ba-ba99-be86a417a4ee" class=""><strong>Models:</strong></p><ol type="1" id="1d8ce278-441f-4ef6-b387-def1a3544107" class="numbered-list" start="1"><li><strong>LIDA (Learning Intelligent Distribution Agent):</strong> Integrates human cognition aspects.</li></ol><ol type="1" id="ac552163-895c-432f-bbc2-66d82d977a86" class="numbered-list" start="2"><li><strong>ACT-R (Active Control of Thought-Rational):</strong> Simplifies cognitive functions into basic operations.</li></ol><ol type="1" id="62d6b46a-770b-40c8-bfaf-932b5a884a97" class="numbered-list" start="3"><li><strong>Soar:</strong> Creates generalized intelligent agents for diverse tasks, emulating human cognitive capacity.</li></ol><hr id="b758e9a0-d615-4592-9437-c37df742e326"/><p id="39434eb4-89cd-4d29-a4a3-3c39dc376a71" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
